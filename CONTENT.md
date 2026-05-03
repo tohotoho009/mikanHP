@@ -142,17 +142,6 @@ courses:
     price: "¥ 3,500"
     price_note: "（税込）"
 
-  - en: "Premium Course"
-    title: "プレミアムコース"
-    desc: "旬魚の刺身・焼物・煮物を含む全10品。日本酒ペアリング付きの贅沢な夜のために。"
-    price: "¥ 5,500"
-    price_note: "〜（税込）"
-
-  - en: "Banquet Plan"
-    title: "宴会プラン"
-    desc: "2時間飲み放題付きの宴会コース。歓送迎会・女子会・各種ご宴会に。前日までご予約可。"
-    price: "¥ 4,000"
-    price_note: "〜（税込）"
 
 alacarte:
   - name: "刺身盛り合わせ"
