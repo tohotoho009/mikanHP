@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>和バル 未完 — 江古田</title>
+  <meta name="description" content="江古田の和バル「未完」。旬の素材を活かした和食とバルの融合。日本酒・ワインと寄り添う一皿を。東京都練馬区栄町4-9。">
+  <meta property="og:title" content="和バル 未完 — 江古田">
+  <meta property="og:description" content="旬の素材を活かした和食とバルの融合。江古田駅南口 徒歩5分。">
+  <meta property="og:image" content="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg">
+  <meta property="og:type" content="restaurant">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Design Tokens (DESIGN.md) ===== */
+    :root {
+      --color-primary:          #c8a96e;
+      --color-primary-active:   #a88a4e;
+      --color-primary-disabled: #4a4438;
+      --color-canvas:           #0f0e0c;
+      --color-surface-soft:     #161410;
+      --color-surface-card:     #1e1b16;
+      --color-surface-card-warm:#252019;
+      --color-surface-light:    #f5f0e6;
+      --color-ink:              #f0ebe0;
+      --color-body:             #c8c0b0;
+      --color-muted:            #8a8070;
+      --color-muted-soft:       #605850;
+      --color-hairline:         #2e2a22;
+
+      --font-serif: 'Noto Serif JP', '游明朝', 'Yu Mincho', serif;
+      --font-sans:  'Noto Sans JP', '游ゴシック', 'Yu Gothic', sans-serif;
+      --font-en:    'Cormorant Garamond', Georgia, serif;
+
+      --sp-xxs: 4px; --sp-xs: 8px; --sp-sm: 12px; --sp-md: 16px;
+      --sp-lg: 24px; --sp-xl: 40px; --sp-xxl: 64px; --sp-section: 120px;
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--color-canvas);
+      color: var(--color-body);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.8;
+      letter-spacing: 0.03em;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+
+    /* ===== Nav ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--sp-xxl);
+      transition: background 0.4s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(15,14,12,0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-color: var(--color-hairline);
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 17px; font-weight: 300;
+      color: var(--color-ink); letter-spacing: 0.15em;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: var(--sp-xl);
+    }
+    .nav-links a {
+      font-size: 13px; font-weight: 500;
+      color: var(--color-body); letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-ink); }
+    .nav-cta {
+      color: var(--color-primary) !important;
+      border: 1px solid var(--color-primary);
+      padding: 8px 22px;
+      transition: background 0.2s, color 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--color-primary); color: var(--color-canvas) !important; }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 1px;
+      background: var(--color-ink);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ===== Mobile Menu ===== */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: var(--color-canvas);
+      flex-direction: column; justify-content: center; align-items: center;
+      gap: var(--sp-xl);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-serif);
+      font-size: 22px; font-weight: 300;
+      letter-spacing: 0.15em; color: var(--color-ink);
+    }
+    .mobile-menu-close {
+      position: absolute; top: var(--sp-xl); right: var(--sp-xxl);
+      font-size: 20px; color: var(--color-muted);
+      cursor: pointer; background: none; border: none;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      height: 100svh; min-height: 600px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: var(--sp-xxl);
+      overflow: hidden;
+    }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg img { object-position: center; }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        to top,
+        rgba(15,14,12,0.95) 0%,
+        rgba(15,14,12,0.6) 45%,
+        rgba(15,14,12,0.25) 100%
+      );
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; }
+    .hero-eyebrow {
+      font-family: var(--font-en);
+      font-size: 12px; font-weight: 300;
+      letter-spacing: 0.28em; color: var(--color-primary);
+      text-transform: uppercase; margin-bottom: var(--sp-lg);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(52px, 9vw, 88px);
+      font-weight: 300; line-height: 1.15; letter-spacing: 0.15em;
+      color: var(--color-ink); margin-bottom: var(--sp-lg);
+    }
+    .hero-sub {
+      font-size: 14px; letter-spacing: 0.1em;
+      color: var(--color-body); margin-bottom: var(--sp-xl);
+    }
+    .hero-actions { display: flex; gap: var(--sp-md); align-items: center; }
+    .hero-scroll {
+      position: absolute; bottom: var(--sp-xl); right: var(--sp-xxl);
+      z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: var(--sp-sm);
+      font-family: var(--font-en); font-size: 10px;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-muted-soft);
+    }
+    .hero-scroll::after {
+      content: ''; display: block; width: 1px; height: 52px;
+      background: var(--color-muted-soft);
+      animation: scrollLine 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      48%  { transform: scaleY(1); transform-origin: top; }
+      52%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ===== Buttons ===== */
+    .btn-primary {
+      display: inline-block;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      padding: 12px 32px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary:hover { background: var(--color-primary); color: var(--color-canvas); }
+    .btn-ghost {
+      display: inline-block;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+      color: var(--color-muted);
+      border: 1px solid var(--color-hairline);
+      padding: 12px 32px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--color-ink); border-color: var(--color-body); }
+
+    /* ===== Section Base ===== */
+    .section { padding: var(--sp-section) var(--sp-xxl); }
+    .section-alt { background: var(--color-surface-soft); }
+    .section-label {
+      font-family: var(--font-en);
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--color-primary); margin-bottom: var(--sp-lg);
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 300; line-height: 1.35; letter-spacing: 0.12em;
+      color: var(--color-ink); margin-bottom: var(--sp-xl);
+    }
+    .gold-line { width: 36px; height: 1px; background: var(--color-primary); margin-bottom: var(--sp-xl); }
+
+    /* ===== Concept ===== */
+    .concept-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--sp-xxl); align-items: center;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .concept-body p {
+      color: var(--color-body); line-height: 2.1;
+      letter-spacing: 0.05em; margin-bottom: var(--sp-lg);
+    }
+    .concept-body p:last-child { margin-bottom: 0; }
+    .concept-image { aspect-ratio: 4/5; overflow: hidden; }
+    .concept-image img { transition: transform 0.7s ease; }
+    .concept-image:hover img { transform: scale(1.04); }
+
+    /* ===== Gallery ===== */
+    .gallery-inner { max-width: 1200px; margin: 0 auto; }
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 3px; margin-bottom: var(--sp-xl);
+    }
+    .gallery-item { aspect-ratio: 1; overflow: hidden; position: relative; }
+    .gallery-item img { transition: transform 0.5s ease; }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(15,14,12,0.88), transparent);
+      padding: var(--sp-md) var(--sp-md) var(--sp-sm);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      color: var(--color-body);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+    .gallery-footer {
+      text-align: center; font-size: 13px;
+      color: var(--color-muted); letter-spacing: 0.05em;
+    }
+    .gallery-footer a {
+      color: var(--color-primary);
+      border-bottom: 1px solid rgba(200,169,110,0.35);
+      padding-bottom: 1px; transition: border-color 0.2s;
+    }
+    .gallery-footer a:hover { border-color: var(--color-primary); }
+
+    /* ===== Menu ===== */
+    .menu-inner { max-width: 1200px; margin: 0 auto; }
+    .menu-note-top {
+      font-size: 12px; color: var(--color-muted);
+      letter-spacing: 0.05em; margin-bottom: var(--sp-xxl);
+    }
+    .menu-courses {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-lg); margin-bottom: var(--sp-xxl);
+    }
+    .course-card {
+      background: var(--color-surface-card);
+      padding: var(--sp-xl);
+      border-top: 1px solid var(--color-hairline);
+      position: relative;
+    }
+    .course-card::before {
+      content: ''; position: absolute; top: -1px; left: 0;
+      width: 36px; height: 2px; background: var(--color-primary);
+    }
+    .course-en {
+      font-family: var(--font-en); font-size: 11px; font-weight: 300;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--color-muted); margin-bottom: var(--sp-sm);
+    }
+    .course-title {
+      font-family: var(--font-serif); font-size: 20px; font-weight: 400;
+      letter-spacing: 0.08em; color: var(--color-ink); margin-bottom: var(--sp-md);
+    }
+    .course-desc {
+      font-size: 13px; color: var(--color-muted);
+      line-height: 1.9; letter-spacing: 0.03em; margin-bottom: var(--sp-xl);
+    }
+    .course-price {
+      font-family: var(--font-en); font-size: 24px; font-weight: 400;
+      letter-spacing: 0.04em; color: var(--color-primary);
+    }
+    .course-price-note { font-size: 12px; color: var(--color-muted); margin-top: 3px; }
+
+    .menu-sep {
+      display: flex; align-items: center; gap: var(--sp-lg);
+      margin-bottom: var(--sp-xl);
+    }
+    .menu-sep-line { flex: 1; height: 1px; background: var(--color-hairline); }
+    .menu-sep-label {
+      font-family: var(--font-en); font-size: 11px;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-muted);
+    }
+    .alacarte-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .alacarte-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: var(--sp-md) 0; border-bottom: 1px solid var(--color-hairline);
+      gap: var(--sp-lg);
+    }
+    .alacarte-item:nth-child(odd)  { padding-right: var(--sp-xxl); }
+    .alacarte-item:nth-child(even) { padding-left: var(--sp-xxl); border-left: 1px solid var(--color-hairline); }
+    .alacarte-name { font-size: 14px; font-weight: 500; color: var(--color-body); letter-spacing: 0.05em; }
+    .alacarte-price { font-family: var(--font-en); font-size: 15px; color: var(--color-primary); white-space: nowrap; }
+    .menu-note-bottom {
+      margin-top: var(--sp-xl); font-size: 12px; color: var(--color-muted-soft);
+      letter-spacing: 0.05em; line-height: 1.9;
+      border-top: 1px solid var(--color-hairline); padding-top: var(--sp-lg);
+    }
+
+    /* ===== Reserve ===== */
+    .reserve-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--sp-xxl); align-items: start;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .reserve-body {
+      font-size: 15px; color: var(--color-body);
+      line-height: 2.1; letter-spacing: 0.05em;
+      margin-bottom: var(--sp-xl); white-space: pre-line;
+    }
+    .reserve-info { margin-bottom: var(--sp-xl); }
+    .reserve-row {
+      display: grid; grid-template-columns: 88px 1fr;
+      gap: var(--sp-md); padding: var(--sp-md) 0;
+      border-bottom: 1px solid var(--color-hairline);
+    }
+    .reserve-label {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; color: var(--color-muted); padding-top: 2px;
+    }
+    .reserve-value { font-size: 14px; color: var(--color-body); letter-spacing: 0.05em; }
+    .reserve-sub { font-size: 12px; color: var(--color-muted); margin-top: 2px; }
+    .reserve-buttons { display: flex; flex-direction: column; gap: var(--sp-sm); }
+    .reserve-deco {
+      background: var(--color-surface-card-warm);
+      padding: var(--sp-xxl);
+      display: flex; flex-direction: column; justify-content: center;
+      min-height: 360px;
+    }
+    .reserve-deco-title {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3vw, 36px); font-weight: 300;
+      letter-spacing: 0.15em; color: var(--color-ink); line-height: 1.7;
+      margin-bottom: var(--sp-xl);
+    }
+    .reserve-deco-en {
+      font-family: var(--font-en); font-size: 12px; font-weight: 300;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-primary);
+    }
+
+    /* ===== Access ===== */
+    .access-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--sp-xxl); align-items: start;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .access-map {
+      aspect-ratio: 4/3; overflow: hidden;
+      filter: grayscale(75%) brightness(0.55) sepia(20%);
+    }
+    .access-map iframe { width: 100%; height: 100%; border: none; }
+    .access-dl { margin-bottom: var(--sp-xl); }
+    .access-row {
+      display: grid; grid-template-columns: 72px 1fr;
+      gap: var(--sp-md); padding: var(--sp-md) 0;
+      border-bottom: 1px solid var(--color-hairline);
+    }
+    .access-dt { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: var(--color-muted); padding-top: 2px; }
+    .access-dd { font-size: 14px; color: var(--color-body); letter-spacing: 0.05em; }
+    .access-dd-note { font-size: 12px; color: var(--color-muted); margin-top: 4px; line-height: 1.8; }
+    .access-note {
+      font-size: 12px; color: var(--color-muted); line-height: 1.9;
+      letter-spacing: 0.05em; margin-bottom: var(--sp-xl); white-space: pre-line;
+    }
+    .access-sns { display: flex; gap: var(--sp-md); }
+    .access-sns a {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+      color: var(--color-muted);
+      border-bottom: 1px solid var(--color-hairline); padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .access-sns a:hover { color: var(--color-primary); border-color: var(--color-primary); }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: #080706;
+      padding: var(--sp-xxl);
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--color-hairline);
+    }
+    .footer-logo {
+      font-family: var(--font-serif); font-size: 15px; font-weight: 300;
+      letter-spacing: 0.18em; color: var(--color-body);
+    }
+    .footer-copy { font-size: 11px; color: var(--color-muted-soft); letter-spacing: 0.08em; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .nav, .hero { padding-left: var(--sp-xl); padding-right: var(--sp-xl); }
+      .hero-scroll { right: var(--sp-xl); }
+      .section { padding: 80px var(--sp-xl); }
+    }
+    @media (max-width: 768px) {
+      .nav { padding: 0 var(--sp-lg); }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .section { padding: 64px var(--sp-lg); }
+      .hero { padding: var(--sp-xxl) var(--sp-lg); }
+      .hero-scroll { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .concept-grid { grid-template-columns: 1fr; }
+      .concept-image { order: -1; aspect-ratio: 3/2; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .menu-courses { grid-template-columns: 1fr; }
+      .alacarte-grid { grid-template-columns: 1fr; }
+      .alacarte-item:nth-child(odd)  { padding-right: 0; }
+      .alacarte-item:nth-child(even) { padding-left: 0; border-left: none; }
+      .reserve-grid { grid-template-columns: 1fr; }
+      .reserve-deco { display: none; }
+      .access-grid { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: var(--sp-md); text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Nav ===== -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-logo">和バル 未完</a>
+  <ul class="nav-links">
+    <li><a href="#concept">お店について</a></li>
+    <li><a href="#gallery">ギャラリー</a></li>
+    <li><a href="#menu">お品書き</a></li>
+    <li><a href="#reserve">ご予約</a></li>
+    <li><a href="#access">アクセス</a></li>
+    <li><a href="#reserve" class="nav-cta">ご予約はこちら</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===== Mobile Menu ===== -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+  <button class="mobile-menu-close" id="menuClose" aria-label="閉じる">✕</button>
+  <a href="#concept"  class="mobile-link">お店について</a>
+  <a href="#gallery"  class="mobile-link">ギャラリー</a>
+  <a href="#menu"     class="mobile-link">お品書き</a>
+  <a href="#reserve"  class="mobile-link">ご予約</a>
+  <a href="#access"   class="mobile-link">アクセス</a>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg" alt="和バル未完 料理">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Wabar Mikan — Ekoda, Tokyo</p>
+    <h1 class="hero-title">和バル<br>未完</h1>
+    <p class="hero-sub">東京 江古田 ― 和食 &amp; バル</p>
+    <div class="hero-actions">
+      <a href="#reserve" class="btn-primary">ご予約</a>
+      <a href="#menu"    class="btn-ghost">お品書きを見る</a>
+    </div>
+  </div>
+  <div class="hero-scroll">scroll</div>
+</section>
+
+<!-- ===== Concept ===== -->
+<section class="section" id="concept">
+  <div class="concept-grid">
+    <div>
+      <p class="section-label">about</p>
+      <h2 class="section-title">完成を<br>目指さない、<br>という完成。</h2>
+      <div class="gold-line"></div>
+      <div class="concept-body">
+        <p>江古田の静かな路地に佇む、<br>和食とバルが溶け合う一軒。<br>旬の素材を丁寧に仕込み、<br>日本酒・ワインと寄り添う一皿を。</p>
+        <p>「未完」とは、常に進化し続ける姿勢のこと。<br>毎夜、新鮮な目で素材と向き合い、<br>今夜だけの料理をお届けします。</p>
+        <p>気取らず、でも真剣に。<br>江古田の夜に、ふらりと寄れる場所。</p>
+      </div>
+    </div>
+    <div class="concept-image">
+      <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628395.jpg" alt="和バル未完 店内">
+    </div>
+  </div>
+</section>
+
+<!-- ===== Gallery ===== -->
+<section class="section section-alt" id="gallery">
+  <div class="gallery-inner">
+    <p class="section-label">gallery</p>
+    <h2 class="section-title">料理・店内</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg" alt="料理">
+        <div class="gallery-caption">本日の一品</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628341.jpg" alt="料理">
+        <div class="gallery-caption">旬の素材</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628492.jpg" alt="店内">
+        <div class="gallery-caption">店内</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628312.jpg" alt="料理">
+        <div class="gallery-caption">季節の肴</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628395.jpg" alt="雰囲気">
+        <div class="gallery-caption">夜の雰囲気</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg" alt="おすすめ">
+        <div class="gallery-caption">おすすめ</div>
+      </div>
+    </div>
+    <p class="gallery-footer">
+      最新の料理写真は
+      <a href="https://www.instagram.com/wabarmikan/" target="_blank" rel="noopener">Instagram @wabarmikan</a>
+      をご覧ください
+    </p>
+  </div>
+</section>
+
+<!-- ===== Menu ===== -->
+<section class="section" id="menu">
+  <div class="menu-inner">
+    <p class="section-label">menu</p>
+    <h2 class="section-title">お品書き</h2>
+    <p class="menu-note-top">仕入れ状況により内容が変わる場合がございます</p>
+
+    <div class="menu-courses">
+      <div class="course-card">
+        <p class="course-en">Omakase Course</p>
+        <h3 class="course-title">おまかせコース</h3>
+        <p class="course-desc">旬の前菜から始まる全7品。その日の仕入れで組み立てる、未完ならではの一夜限りの構成。</p>
+        <div class="course-price">¥ 3,500</div>
+        <div class="course-price-note">〜（税込）</div>
+      </div>
+      <div class="course-card">
+        <p class="course-en">Premium Course</p>
+        <h3 class="course-title">プレミアムコース</h3>
+        <p class="course-desc">旬魚の刺身・焼物・煮物を含む全10品。日本酒ペアリング付きの贅沢な夜のために。</p>
+        <div class="course-price">¥ 5,500</div>
+        <div class="course-price-note">〜（税込）</div>
+      </div>
+      <div class="course-card">
+        <p class="course-en">Banquet Plan</p>
+        <h3 class="course-title">宴会プラン</h3>
+        <p class="course-desc">2時間飲み放題付きの宴会コース。歓送迎会・女子会・各種ご宴会に。前日までご予約可。</p>
+        <div class="course-price">¥ 4,000</div>
+        <div class="course-price-note">〜（税込）</div>
+      </div>
+    </div>
+
+    <div class="menu-sep">
+      <div class="menu-sep-line"></div>
+      <span class="menu-sep-label">À la carte</span>
+      <div class="menu-sep-line"></div>
+    </div>
+
+    <div class="alacarte-grid">
+      <div class="alacarte-item">
+        <span class="alacarte-name">刺身盛り合わせ</span>
+        <span class="alacarte-price">時価</span>
+      </div>
+      <div class="alacarte-item">
+        <span class="alacarte-name">だし巻き玉子</span>
+        <span class="alacarte-price">¥ 550</span>
+      </div>
+      <div class="alacarte-item">
+        <span class="alacarte-name">天ぷら盛り合わせ</span>
+        <span class="alacarte-price">¥ 1,100〜</span>
+      </div>
+      <div class="alacarte-item">
+        <span class="alacarte-name">季節の焼き魚</span>
+        <span class="alacarte-price">時価</span>
+      </div>
+      <div class="alacarte-item">
+        <span class="alacarte-name">もつ煮込み</span>
+        <span class="alacarte-price">¥ 660</span>
+      </div>
+      <div class="alacarte-item">
+        <span class="alacarte-name">冷やしトマト</span>
+        <span class="alacarte-price">¥ 440</span>
+      </div>
+    </div>
+
+    <div class="menu-note-bottom">
+      メニューの詳細・最新情報は食べログ・Instagramをご確認ください。<br>
+      アレルギーのある方はご来店前にお知らせください。
+    </div>
+  </div>
+</section>
+
+<!-- ===== Reserve ===== -->
+<section class="section section-alt" id="reserve">
+  <div class="reserve-grid">
+    <div>
+      <p class="section-label">reservation</p>
+      <h2 class="section-title">ご予約・<br>お問い合わせ</h2>
+      <div class="gold-line"></div>
+      <p class="reserve-body">ご予約はInstagramのDMよりお気軽にどうぞ。
+少人数のお一人様から宴会まで承ります。</p>
+      <div class="reserve-info">
+        <div class="reserve-row">
+          <span class="reserve-label">営業時間</span>
+          <div>
+            <div class="reserve-value">月〜土 17:00〜24:00</div>
+            <div class="reserve-sub">L.O. 23:30</div>
+          </div>
+        </div>
+        <div class="reserve-row">
+          <span class="reserve-label">定休日</span>
+          <div>
+            <div class="reserve-value">日曜日</div>
+            <div class="reserve-sub">不定休あり</div>
+          </div>
+        </div>
+        <div class="reserve-row">
+          <span class="reserve-label">予算</span>
+          <div>
+            <div class="reserve-value">¥ 4,000〜4,999</div>
+            <div class="reserve-sub">お一人様・夜</div>
+          </div>
+        </div>
+        <div class="reserve-row">
+          <span class="reserve-label">SNS</span>
+          <div>
+            <div class="reserve-value">@wabarmikan</div>
+            <div class="reserve-sub">Instagram DM予約可</div>
+          </div>
+        </div>
+      </div>
+      <div class="reserve-buttons">
+        <a href="https://www.instagram.com/wabarmikan/" target="_blank" rel="noopener" class="btn-primary">Instagram でご予約</a>
+        <a href="https://tabelog.com/tokyo/A1321/A132101/13196558/" target="_blank" rel="noopener" class="btn-ghost">食べログを見る</a>
+      </div>
+    </div>
+    <div class="reserve-deco">
+      <div class="reserve-deco-title">今夜だけの<br>一皿を、<br>あなたへ。</div>
+      <div class="reserve-deco-en">Wabar Mikan, Ekoda</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Access ===== -->
+<section class="section" id="access">
+  <div class="access-grid">
+    <div class="access-map">
+      <iframe
+        src="https://maps.google.com/maps?q=東京都練馬区栄町4-9&output=embed&z=16&hl=ja"
+        title="和バル未完 地図"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div>
+      <p class="section-label">access</p>
+      <h2 class="section-title">アクセス</h2>
+      <dl class="access-dl">
+        <div class="access-row">
+          <dt class="access-dt">店名</dt>
+          <dd class="access-dd">和バル 未完（わバル みかん）</dd>
+        </div>
+        <div class="access-row">
+          <dt class="access-dt">住所</dt>
+          <dd class="access-dd">
+            〒176-0001 東京都練馬区栄町4-9
+            <div class="access-dd-note">
+              西武池袋線 江古田駅 南口 徒歩約5分<br>
+              都営大江戸線 新江古田駅 徒歩約10分
+            </div>
+          </dd>
+        </div>
+        <div class="access-row">
+          <dt class="access-dt">営業</dt>
+          <dd class="access-dd">
+            月〜土 17:00〜24:00
+            <div class="access-dd-note">日曜定休・不定休あり</div>
+          </dd>
+        </div>
+        <div class="access-row">
+          <dt class="access-dt">予算</dt>
+          <dd class="access-dd">¥ 4,000〜4,999</dd>
+        </div>
+      </dl>
+      <p class="access-note">お車でのご来店は近隣のコインパーキングをご利用ください。
+最新情報はInstagramをご確認ください。</p>
+      <div class="access-sns">
+        <a href="https://www.instagram.com/wabarmikan/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://tabelog.com/tokyo/A1321/A132101/13196558/" target="_blank" rel="noopener">食べログ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-logo">和バル 未完</div>
+  <div class="footer-copy">東京都練馬区栄町4-9 ／ © 和バル 未完</div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose  = document.getElementById('menuClose');
+
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
