@@ -133,9 +133,14 @@ footer_note: |
 courses:
   - en: "Omakase Course"
     title: "おまかせコース"
-    desc: "旬の前菜から始まる全7品。その日の仕入れで組み立てる、未完ならではの一夜限りの構成。"
+    dishes: 12
+    menu:
+      - "前菜"
+      - "焼き物"
+      - "一品料理"
+      - "季節の土鍋御飯"
     price: "¥ 3,500"
-    price_note: "〜（税込）"
+    price_note: "（税込）"
 
   - en: "Premium Course"
     title: "プレミアムコース"
