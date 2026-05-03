@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>店頭ポスター（屋外用） — 和バル 未完</title>
+  <title>店頭ポスター（屋外用） — 未完</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
@@ -49,19 +49,6 @@
     }
 
     /* 背景「未」文字 */
-    .bg-kanji {
-      position: absolute;
-      right: -40px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--font-s);
-      font-size: 520px;
-      font-weight: 200;
-      color: rgba(154,116,64,0.055);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
 
     /* フレーム */
     .frame-outer {
@@ -120,19 +107,20 @@
     }
     .header-logo {
       font-family: var(--font-s);
-      font-size: 52px;
+      font-size: 72px;
       font-weight: 300;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.2em;
       color: var(--ink);
       line-height: 1;
       margin-bottom: 8px;
     }
     .header-logo span {
-      font-size: 28px;
-      letter-spacing: 0.25em;
+      font-family: var(--font-s);
+      font-size: 15px;
+      letter-spacing: 0.35em;
       color: var(--body);
       display: block;
-      margin-top: 6px;
+      margin-top: 10px;
     }
     .header-tagline {
       font-family: var(--font-e);
@@ -183,7 +171,7 @@
 
     /* コースブロック */
     .course-wrap {
-      background: var(--card);
+      background: rgba(238, 232, 219, 0.62);
       border: 1px solid var(--line);
       padding: 24px 36px;
       margin-bottom: 14px;
@@ -275,7 +263,7 @@
       background: var(--line);
     }
     .kondate-item {
-      background: var(--card2);
+      background: rgba(230, 222, 206, 0.62);
       text-align: center;
       padding: 12px 8px;
     }
@@ -301,7 +289,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      margin-bottom: 14px;
+      flex-grow: 1;
       padding: 0 8px;
     }
     .v-line    { width: 1px; height: 36px; background: var(--line); flex-shrink: 0; }
@@ -324,7 +312,7 @@
 
     /* 予約 */
     .reserve {
-      background: var(--card);
+      background: rgba(238, 232, 219, 0.62);
       border: 1px solid var(--line);
       display: flex;
       align-items: stretch;
@@ -449,7 +437,7 @@
 
     /* フッター */
     .footer {
-      margin-top: auto;
+      margin-top: 0;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -465,9 +453,16 @@
     }
 
     @media print {
-      body { background: none; padding: 0; }
-      .poster { width: 210mm; min-height: 297mm; }
-      @page { size: A4; margin: 0; }
+      @page { size: A4 portrait; margin: 0; }
+      html, body {
+        margin: 0; padding: 0; background: none;
+        display: block; width: 210mm; height: 297mm;
+      }
+      .poster {
+        position: absolute; top: 0; left: 0;
+        width: 210mm; height: 297mm;
+        overflow: hidden;
+      }
     }
   </style>
 </head>
@@ -476,9 +471,8 @@
 
   <!-- 背景：看板写真 -->
   <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-    <img src="images/kanban.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.05;filter:grayscale(100%) sepia(20%);">
+    <img src="images/mikan-logo.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.15;filter:grayscale(100%) invert(1);">
   </div>
-  <div class="bg-kanji">未</div>
   <div class="frame-outer"></div>
   <div class="frame-inner"></div>
   <div class="corner corner-tl"></div>
@@ -495,8 +489,8 @@
         <div class="header-line right"></div>
       </div>
       <div class="header-logo">
-        和バル 未完
-        <span>江古田 ― 和食 &amp; バル</span>
+        未完
+        <span>江古田 ― 比内地鶏</span>
       </div>
       <div class="header-tagline">Incomplete by design — always becoming</div>
     </div>
@@ -601,7 +595,7 @@
 
     <div class="footer">
       <div class="footer-line"></div>
-      <div class="footer-logo">和バル 未完 — Wabar Mikan, Ekoda</div>
+      <div class="footer-logo">未完 — Wabar Mikan, Ekoda</div>
       <div class="footer-line"></div>
     </div>
 

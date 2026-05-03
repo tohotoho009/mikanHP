@@ -1,4 +1,4 @@
-# CONTENT.md — 和バル 未完 サイトコンテンツ定義
+# CONTENT.md — 未完 サイトコンテンツ定義
 
 > このファイルはサイト内の全テキスト・画像・リンクの唯一の真実（Single Source of Truth）です。
 > コピーや画像URLを変更する場合はここを先に編集してください。
@@ -8,8 +8,8 @@
 ## 店舗基本情報
 
 ```yaml
-name_ja:    "和バル 未完"
-name_kana:  "わバル みかん"
+name_ja:    "未完"
+name_kana:  "みかん"
 name_en:    "Wabar Mikan"
 genre:      "和食・居酒屋・和バル"
 address:    "〒176-0001 東京都練馬区栄町4-9"
@@ -29,7 +29,7 @@ tabelog:    "https://tabelog.com/tokyo/A1321/A132101/13196558/"
 ## ナビゲーション
 
 ```yaml
-logo: "和バル 未完"
+logo: "未完"
 logo_href: "#hero"
 
 links:
@@ -56,7 +56,7 @@ links:
 ```yaml
 en_sub:   "Wabar Mikan — Ekoda, Tokyo"
 title:    "和バル\n未完"           # <br> で改行
-sub:      "東京 江古田 ― 和食 & バル"
+sub:      "東京 江古田 ― 比内地鶏"
 scroll_label: "scroll"
 
 bg_image: "images/kanban.jpg"
@@ -95,7 +95,7 @@ footer_suffix: "をご覧ください"
 
 images:
   - src: "images/kanban.jpg"
-    caption: "和バル 未完"
+    caption: "未完"
     alt: "看板"
   - src: "images/tennai.jpg"
     caption: "店内"
@@ -208,7 +208,7 @@ map_embed_src: "https://maps.google.com/maps?q=東京都練馬区栄町4-9&outpu
 
 info:
   - dt: "店名"
-    dd: "和バル 未完（わバル みかん）"
+    dd: "未完（みかん）"
   - dt: "住所"
     dd: "〒176-0001 東京都練馬区栄町4-9"
     note:
@@ -236,8 +236,8 @@ sns_links:
 ### Footer
 
 ```yaml
-logo: "和バル 未完"
-copy: "東京都練馬区栄町4-9 ／ © 和バル 未完"
+logo: "未完"
+copy: "東京都練馬区栄町4-9 ／ © 未完"
 ```
 
 ---
@@ -246,7 +246,7 @@ copy: "東京都練馬区栄町4-9 ／ © 和バル 未完"
 
 ```html
 <meta name="description" content="江古田の和バル「未完」。旬の素材を活かした和食とバルの融合。日本酒・ワインと寄り添う一皿を。東京都練馬区栄町4-9。">
-<meta property="og:title" content="和バル 未完 — 江古田">
+<meta property="og:title" content="未完 — 江古田">
 <meta property="og:description" content="旬の素材を活かした和食とバルの融合。江古田駅南口 徒歩5分。">
 <meta property="og:image" content="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg">
 <meta property="og:type" content="restaurant">
