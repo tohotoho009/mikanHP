@@ -11,7 +11,7 @@
 name_ja:    "未完"
 name_kana:  "みかん"
 name_en:    "Wabar Mikan"
-genre:      "和食・居酒屋・和バル"
+genre:      "焼き鳥・比内地鶏・居酒屋"
 address:    "〒176-0001 東京都練馬区栄町4-9"
 access:
   - "西武池袋線 江古田駅 南口 徒歩約5分"
@@ -55,7 +55,7 @@ links:
 
 ```yaml
 en_sub:   "Wabar Mikan — Ekoda, Tokyo"
-title:    "和バル\n未完"           # <br> で改行
+title:    "未完"
 sub:      "東京 江古田 ― 比内地鶏"
 scroll_label: "scroll"
 
@@ -71,13 +71,13 @@ section_label: "about"
 section_title: "完成を\n目指さない、\nという完成。"   # <br> で改行
 
 body:
-  - "江古田の静かな路地に佇む、\n和食とバルが溶け合う一軒。\n旬の素材を丁寧に仕込み、\n日本酒・ワインと寄り添う一皿を。"
-  - "「未完」とは、常に進化し続ける姿勢のこと。\n毎夜、新鮮な目で素材と向き合い、\n今夜だけの料理をお届けします。"
-  - "気取らず、でも真剣に。\n江古田の夜に、ふらりと寄れる場所。"
+  - "江古田の静かな路地に佇む、\n比内地鶏の焼き鳥を専門とした一軒。\n日本三大地鶏のひとつ、秋田・比内地鶏を\n炭火でじっくりと焼き上げる。"
+  - "「未完」とは、常に進化し続ける姿勢のこと。\n毎夜、鮮度にこだわった比内地鶏と向き合い、\n今夜だけの一串をお届けします。"
+  - "気取らず、でも真剣に。\n江古田の夜に、ふらりと寄れる焼き鳥店。"
 
 image:
   src: "images/tennai.jpg"
-  alt: "和バル未完 店内"
+  alt: "未完 店内"
 ```
 
 ---
@@ -245,9 +245,9 @@ copy: "東京都練馬区栄町4-9 ／ © 未完"
 ## OGP / メタ情報（未設定・要追加）
 
 ```html
-<meta name="description" content="江古田の和バル「未完」。旬の素材を活かした和食とバルの融合。日本酒・ワインと寄り添う一皿を。東京都練馬区栄町4-9。">
+<meta name="description" content="江古田の焼き鳥「未完」。日本三大地鶏・比内地鶏の焼き鳥を専門とした一軒。炭火でじっくりと。東京都練馬区栄町4-9。">
 <meta property="og:title" content="未完 — 江古田">
-<meta property="og:description" content="旬の素材を活かした和食とバルの融合。江古田駅南口 徒歩5分。">
+<meta property="og:description" content="比内地鶏の焼き鳥を専門とした一軒。江古田駅南口 徒歩5分。">
 <meta property="og:image" content="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg">
 <meta property="og:type" content="restaurant">
 <meta name="twitter:card" content="summary_large_image">
