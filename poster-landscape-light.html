@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>店頭ポスター（横版・屋外用） — 未完</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold:        #9a7440;
+      --gold-dim:    rgba(154,116,64,0.2);
+      --canvas:      #f7f3ec;
+      --card:        rgba(238,232,219,0.62);
+      --card2:       rgba(230,222,206,0.62);
+      --ink:         #1a1510;
+      --body:        #3a3028;
+      --muted:       #7a6e60;
+      --line:        rgba(154,116,64,0.25);
+      --line-dark:   rgba(26,21,16,0.12);
+      --font-s: 'Noto Serif JP', serif;
+      --font-g: 'Noto Sans JP', sans-serif;
+      --font-e: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #888;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 48px 24px;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── ポスター本体 A4横固定 ── */
+    .poster {
+      width: 1123px;
+      height: 794px;
+      background: var(--canvas);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* 背景画像 */
+    .bg-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .bg-img img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 65%;
+      height: auto;
+      opacity: 0.12;
+      filter: grayscale(100%) invert(1);
+    }
+
+    /* フレーム */
+    .frame-outer {
+      position: absolute; inset: 16px;
+      border: 1px solid var(--line);
+      pointer-events: none;
+    }
+    .frame-inner {
+      position: absolute; inset: 22px;
+      border: 1px solid rgba(154,116,64,0.12);
+      pointer-events: none;
+    }
+    .corner { position: absolute; width: 18px; height: 18px; }
+    .corner-tl { top: 12px;    left: 12px;   border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+    .corner-tr { top: 12px;    right: 12px;  border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+    .corner-bl { bottom: 12px; left: 12px;   border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+    .corner-br { bottom: 12px; right: 12px;  border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+    /* ── 内側：2カラム ── */
+    .inner {
+      position: relative;
+      z-index: 1;
+      padding: 32px 44px 26px;
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      flex: 1;
+    }
+
+    /* ── 左カラム（ブランディング） ── */
+    .left-col {
+      width: 270px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-right: 32px;
+      border-right: 1px solid var(--line);
+    }
+    .left-en {
+      font-family: var(--font-e);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .left-name {
+      font-family: var(--font-s);
+      font-size: 80px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .left-sub {
+      font-family: var(--font-s);
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--body);
+      margin-bottom: 20px;
+    }
+    .left-ornament {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .left-ornament-line { flex: 1; height: 1px; background: var(--line); }
+    .left-ornament-diamond {
+      width: 5px; height: 5px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+    .left-tagline {
+      font-family: var(--font-e);
+      font-style: italic;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── 右カラム（コンテンツ） ── */
+    .right-col {
+      flex: 1;
+      padding-left: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* お知らせ */
+    .notice {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .notice-label {
+      font-family: var(--font-e);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--canvas);
+      background: var(--gold);
+      padding: 4px 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .notice-text {
+      font-family: var(--font-s);
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+    }
+
+    /* コースブロック */
+    .course-wrap {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 16px 24px;
+      position: relative;
+    }
+    .course-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .course-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .course-en {
+      font-family: var(--font-e);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .course-name {
+      font-family: var(--font-s);
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .course-count {
+      margin-top: 6px;
+      font-family: var(--font-e);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+    }
+    .course-price-block { text-align: right; }
+    .course-price-small {
+      font-family: var(--font-e);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .course-price {
+      font-family: var(--font-e);
+      font-size: 38px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .course-price-yen { font-size: 18px; vertical-align: super; }
+    .course-price-note {
+      margin-top: 4px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-family: var(--font-g);
+    }
+    .kondate-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .kondate-label {
+      font-family: var(--font-s);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+    .kondate-rule { flex: 1; height: 1px; background: var(--line); }
+    .kondate-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+    }
+    .kondate-item {
+      background: var(--card2);
+      text-align: center;
+      padding: 8px 6px;
+    }
+    .kondate-item-text {
+      font-family: var(--font-s);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .kondate-item-num {
+      font-family: var(--font-e);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    /* 予約ブロック */
+    .reserve {
+      background: var(--card);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      position: relative;
+    }
+    .reserve::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    }
+    .reserve-qr-wrap {
+      padding: 14px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--line);
+      gap: 6px;
+    }
+    .reserve-qr {
+      width: 76px; height: 76px;
+      background: #fff;
+      padding: 4px;
+      border: 1px solid var(--line-dark);
+      display: block;
+    }
+    .reserve-qr img { width: 100%; height: 100%; display: block; }
+    .reserve-qr-label {
+      font-family: var(--font-e);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+    .reserve-body {
+      padding: 14px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .reserve-tag {
+      font-family: var(--font-e);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .reserve-title {
+      font-family: var(--font-s);
+      font-size: 15px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .reserve-handle {
+      font-family: var(--font-e);
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .reserve-note {
+      font-size: 11px;
+      font-family: var(--font-g);
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+    }
+
+    /* 店舗情報バー */
+    .info-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+    }
+    .info-cell {
+      background: rgba(247,243,236,0.8);
+      padding: 8px 10px;
+      text-align: center;
+    }
+    .info-cell + .info-cell {
+      border-left: 1px solid var(--line);
+    }
+    .info-label {
+      font-family: var(--font-e);
+      font-size: 8px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+      display: block;
+    }
+    .info-value {
+      font-family: var(--font-g);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .info-sub {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+      letter-spacing: 0.04em;
+      font-family: var(--font-g);
+    }
+
+    /* フッター */
+    .footer {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .footer-line { flex: 1; height: 1px; background: var(--line); }
+    .footer-logo {
+      font-family: var(--font-e);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── 印刷 ── */
+    @media print {
+      @page { size: A4 landscape; margin: 0; }
+      html, body {
+        margin: 0; padding: 0; background: none;
+        display: block; width: 297mm; height: 210mm;
+      }
+      .poster {
+        position: absolute; top: 0; left: 0;
+        width: 297mm; height: 210mm;
+        overflow: hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- 背景 -->
+  <div class="bg-img">
+    <img src="images/mikan-logo.jpg" alt="">
+  </div>
+
+  <!-- フレーム -->
+  <div class="frame-outer"></div>
+  <div class="frame-inner"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="inner">
+
+    <!-- 左カラム -->
+    <div class="left-col">
+      <div class="left-en">Wabar Mikan — Ekoda, Tokyo</div>
+      <div class="left-name">未完</div>
+      <div class="left-sub">江古田 ― 比内地鶏</div>
+      <div class="left-ornament">
+        <div class="left-ornament-line"></div>
+        <div class="left-ornament-diamond"></div>
+        <div class="left-ornament-line"></div>
+      </div>
+      <div class="left-tagline">Incomplete by design<br>— always becoming</div>
+    </div>
+
+    <!-- 右カラム -->
+    <div class="right-col">
+
+      <!-- お知らせ -->
+      <div class="notice">
+        <div class="notice-label">Notice</div>
+        <div class="notice-text">コース料理のみのご提供となります</div>
+      </div>
+
+      <!-- コースブロック -->
+      <div class="course-wrap">
+        <div class="course-top">
+          <div class="course-title-block">
+            <div class="course-en">Omakase Course</div>
+            <div class="course-name">おまかせコース</div>
+            <div class="course-count">全 12 品</div>
+          </div>
+          <div class="course-price-block">
+            <div class="course-price-small">price per person</div>
+            <div class="course-price"><span class="course-price-yen">¥</span>3,500</div>
+            <div class="course-price-note">税抜 / 税込 ¥3,850・おひとり様</div>
+          </div>
+        </div>
+        <div class="kondate-header">
+          <div class="kondate-label">献　立</div>
+          <div class="kondate-rule"></div>
+        </div>
+        <div class="kondate-grid">
+          <div class="kondate-item">
+            <span class="kondate-item-text">前菜</span>
+            <span class="kondate-item-num">Starter</span>
+          </div>
+          <div class="kondate-item">
+            <span class="kondate-item-text">焼き物</span>
+            <span class="kondate-item-num">Grilled</span>
+          </div>
+          <div class="kondate-item">
+            <span class="kondate-item-text">一品料理</span>
+            <span class="kondate-item-num">A la carte</span>
+          </div>
+          <div class="kondate-item">
+            <span class="kondate-item-text">土鍋御飯</span>
+            <span class="kondate-item-num">Clay Pot Rice</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 予約 -->
+      <div class="reserve">
+        <div class="reserve-qr-wrap">
+          <div class="reserve-qr">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://www.instagram.com/wabarmikan/&margin=0&color=1a1510&bgcolor=ffffff"
+              alt="Instagram QRコード"
+            >
+          </div>
+          <div class="reserve-qr-label">Scan to Reserve</div>
+        </div>
+        <div class="reserve-body">
+          <div class="reserve-tag">Reservation</div>
+          <div class="reserve-title">ご予約・お問い合わせ</div>
+          <div class="reserve-handle">@wabarmikan</div>
+          <div class="reserve-note">
+            Instagram DM よりお気軽にどうぞ<br>
+            少人数〜グループまで承ります
+          </div>
+        </div>
+      </div>
+
+      <!-- 店舗情報 -->
+      <div class="info-bar">
+        <div class="info-cell">
+          <span class="info-label">Hours</span>
+          <div class="info-value">17:00 〜 24:00</div>
+          <div class="info-sub">月〜日 ／ L.O. 23:30</div>
+        </div>
+        <div class="info-cell">
+          <span class="info-label">Closed</span>
+          <div class="info-value">不定休</div>
+          <div class="info-sub">最新情報はInstagramで</div>
+        </div>
+        <div class="info-cell">
+          <span class="info-label">Access</span>
+          <div class="info-value">練馬区栄町 4-9</div>
+          <div class="info-sub">江古田駅南口 徒歩約5分</div>
+        </div>
+      </div>
+
+      <!-- フッター -->
+      <div class="footer">
+        <div class="footer-line"></div>
+        <div class="footer-logo">未完 — Wabar Mikan, Ekoda</div>
+        <div class="footer-line"></div>
+      </div>
+
+    </div><!-- /right-col -->
+  </div><!-- /inner -->
+</div><!-- /poster -->
+</body>
+</html>
