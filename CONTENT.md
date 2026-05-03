@@ -59,7 +59,7 @@ title:    "和バル\n未完"           # <br> で改行
 sub:      "東京 江古田 ― 和食 & バル"
 scroll_label: "scroll"
 
-bg_image: "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg"
+bg_image: "images/kanban.jpg"
 ```
 
 ---
@@ -76,7 +76,7 @@ body:
   - "気取らず、でも真剣に。\n江古田の夜に、ふらりと寄れる場所。"
 
 image:
-  src: "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628395.jpg"
+  src: "images/tennai.jpg"
   alt: "和バル未完 店内"
 ```
 
@@ -94,24 +94,24 @@ footer_link_href: "https://www.instagram.com/wabarmikan/"
 footer_suffix: "をご覧ください"
 
 images:
+  - src: "images/kanban.jpg"
+    caption: "和バル 未完"
+    alt: "看板"
+  - src: "images/tennai.jpg"
+    caption: "店内"
+    alt: "店内"
   - src: "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg"
     caption: "本日の一品"
     alt: "料理"
   - src: "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628341.jpg"
     caption: "旬の素材"
     alt: "料理"
-  - src: "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628492.jpg"
-    caption: "店内"
-    alt: "店内"
   - src: "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628312.jpg"
     caption: "季節の肴"
     alt: "料理"
-  - src: "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628395.jpg"
-    caption: "夜の雰囲気"
-    alt: "雰囲気"
-  - src: "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg"
-    caption: "おすすめ"
-    alt: "おすすめ"
+  - src: "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628492.jpg"
+    caption: "季節の一品"
+    alt: "料理"
 ```
 
 > **画像追加方法**：食べログの写真URLは
