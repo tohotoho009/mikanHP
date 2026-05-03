@@ -36,10 +36,10 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── ポスター本体 A4 ── */
+    /* ── ポスター本体 A4固定 ── */
     .poster {
       width: 794px;
-      min-height: 1123px;
+      height: 1123px;
       background: var(--dark);
       position: relative;
       display: flex;
@@ -92,7 +92,7 @@
     .inner {
       position: relative;
       z-index: 1;
-      padding: 56px 64px 48px;
+      padding: 38px 56px 30px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -101,14 +101,14 @@
     /* ── ヘッダー ── */
     .header {
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 16px;
     }
     .header-top {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
     .header-line {
       flex: 1;
@@ -129,24 +129,24 @@
     }
     .header-logo {
       font-family: var(--font-s);
-      font-size: 62px;
+      font-size: 52px;
       font-weight: 300;
       letter-spacing: 0.3em;
       color: var(--ink);
       line-height: 1;
-      margin-bottom: 14px;
+      margin-bottom: 8px;
     }
     .header-logo span {
-      font-size: 36px;
+      font-size: 28px;
       letter-spacing: 0.25em;
       color: var(--body);
       display: block;
-      margin-top: 8px;
+      margin-top: 6px;
     }
     .header-tagline {
       font-family: var(--font-e);
       font-style: italic;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 300;
       letter-spacing: 0.15em;
       color: var(--muted);
@@ -158,7 +158,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin: 24px 0;
+      margin: 10px 0;
     }
     .ornament-line {
       flex: 1;
@@ -183,7 +183,7 @@
     /* ── お知らせ ── */
     .notice {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 14px;
     }
     .notice-label {
       display: inline-block;
@@ -199,19 +199,19 @@
     }
     .notice-text {
       font-family: var(--font-s);
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 300;
       letter-spacing: 0.25em;
       color: var(--ink);
-      line-height: 1.8;
+      line-height: 1.6;
     }
 
     /* ── コースメインブロック ── */
     .course-wrap {
       background: var(--card);
       border: 1px solid rgba(200,169,110,0.15);
-      padding: 40px 44px;
-      margin-bottom: 28px;
+      padding: 24px 36px;
+      margin-bottom: 14px;
       position: relative;
     }
     /* 上辺に金グラデライン */
@@ -227,7 +227,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 32px;
+      margin-bottom: 18px;
     }
     .course-title-block {}
     .course-en {
@@ -241,7 +241,7 @@
     }
     .course-name {
       font-family: var(--font-s);
-      font-size: 38px;
+      font-size: 30px;
       font-weight: 300;
       letter-spacing: 0.2em;
       color: var(--ink);
@@ -268,14 +268,14 @@
     }
     .course-price {
       font-family: var(--font-e);
-      font-size: 52px;
+      font-size: 44px;
       font-weight: 300;
       letter-spacing: 0.02em;
       color: var(--gold);
       line-height: 1;
     }
     .course-price-yen {
-      font-size: 28px;
+      font-size: 22px;
       vertical-align: super;
     }
     .course-price-note {
@@ -316,7 +316,7 @@
     .kondate-item {
       background: var(--card2);
       text-align: center;
-      padding: 18px 8px;
+      padding: 12px 8px;
     }
     .kondate-item-text {
       font-family: var(--font-s);
@@ -340,12 +340,12 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      margin-bottom: 28px;
+      margin-bottom: 14px;
       padding: 0 8px;
     }
     .v-line {
       width: 1px;
-      height: 60px;
+      height: 36px;
       background: var(--line);
       flex-shrink: 0;
     }
@@ -383,7 +383,7 @@
       border: 1px solid rgba(200,169,110,0.15);
       display: flex;
       align-items: stretch;
-      margin-bottom: 28px;
+      margin-bottom: 14px;
       overflow: hidden;
       position: relative;
     }
@@ -395,17 +395,17 @@
       background: linear-gradient(to bottom, transparent, var(--gold), transparent);
     }
     .reserve-qr-wrap {
-      padding: 28px 32px;
+      padding: 18px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       border-right: 1px solid rgba(200,169,110,0.12);
-      gap: 10px;
+      gap: 8px;
     }
     .reserve-qr {
-      width: 108px;
-      height: 108px;
+      width: 90px;
+      height: 90px;
       background: #fff;
       padding: 5px;
       display: block;
@@ -421,7 +421,7 @@
       text-align: center;
     }
     .reserve-body {
-      padding: 28px 36px;
+      padding: 18px 28px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -437,12 +437,12 @@
     }
     .reserve-title {
       font-family: var(--font-s);
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 300;
       letter-spacing: 0.2em;
       color: var(--ink);
-      margin-bottom: 10px;
-      line-height: 1.5;
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
     .reserve-handle {
       font-family: var(--font-e);
@@ -466,12 +466,12 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
       border: 1px solid var(--line);
-      margin-bottom: 24px;
+      margin-bottom: 14px;
       background: var(--line);
     }
     .info-cell {
       background: var(--dark);
-      padding: 18px 16px;
+      padding: 11px 12px;
       text-align: center;
       position: relative;
     }
