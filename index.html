@@ -128,8 +128,13 @@
       padding: var(--sp-xxl);
       overflow: hidden;
     }
-    .hero-bg { position: absolute; inset: 0; z-index: 0; }
-    .hero-bg img { object-position: center; }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url('images/kanban.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
@@ -467,9 +472,7 @@
 
 <!-- ===== Hero ===== -->
 <section class="hero" id="hero">
-  <div class="hero-bg">
-    <img src="images/kanban.jpg" alt="和バル未完 看板">
-  </div>
+  <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Wabar Mikan — Ekoda, Tokyo</p>
