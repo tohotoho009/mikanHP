@@ -140,7 +140,7 @@ courses:
       - "一品料理"
       - "季節の土鍋御飯"
     price: "¥ 3,500"
-    price_note: "（税込）"
+    price_note: "税抜 / 税込 ¥ 3,850"
 
 
 alacarte:
