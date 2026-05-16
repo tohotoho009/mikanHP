@@ -41,6 +41,17 @@
       padding: 12mm 10mm 12mm;
       display: flex;
       flex-direction: column;
+      background-color: #f5f0e6;
+    }
+    /* 透かし：invert で黒背景→白に反転 → multiply で白が消えて文字だけ残る */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('../images/mikan-logo.jpg') center / 65% auto no-repeat;
+      filter: invert(1);
+      opacity: 0.13;
+      mix-blend-mode: multiply;
     }
 
     /* 四隅の菱形 */
