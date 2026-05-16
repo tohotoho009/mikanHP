@@ -30,10 +30,10 @@
 
 ```bash
 # poster-landscape-light.html → PDF出力
-node gen-pdf.js
+node posters/gen-pdf.js
 ```
 
-出力先：`poster-landscape-light.pdf`（プロジェクトルート）
+出力先：`posters/poster-landscape-light.pdf`
 
 ---
 

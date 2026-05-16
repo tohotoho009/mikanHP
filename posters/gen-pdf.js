@@ -13,7 +13,7 @@ const puppeteer = require('puppeteer-core');
 
   for (const f of files) {
     const page = await browser.newPage();
-    const url = 'file:///C:/project/mikanHP/' + f.html;
+    const url = 'file:///C:/project/mikanHP/posters/' + f.html;
     await page.goto(url, { waitUntil: 'networkidle0' });
     await page.pdf({
       path: f.pdf,
