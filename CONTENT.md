@@ -21,7 +21,7 @@ closed:     "不定休あり"
 budget:     "¥4,000〜4,999（お一人様・夜）"
 phone:      ""   # 要確認・追加
 instagram:  "https://www.instagram.com/wabarmikan/"
-tabelog:    "https://tabelog.com/tokyo/A1321/A132101/13196558/"
+tabelog:    ""   # 更新停止中のためリンク非掲載
 ```
 
 ---
@@ -191,9 +191,7 @@ buttons:
   - label: "Instagram でご予約"
     href: "https://www.instagram.com/wabarmikan/"
     variant: "primary"
-  - label: "食べログを見る"
-    href: "https://tabelog.com/tokyo/A1321/A132101/13196558/"
-    variant: "ghost"
+  # 食べログは更新停止中のためボタン非掲載
 ```
 
 ---
@@ -227,8 +225,6 @@ note: |
 sns_links:
   - label: "Instagram"
     href: "https://www.instagram.com/wabarmikan/"
-  - label: "食べログ"
-    href: "https://tabelog.com/tokyo/A1321/A132101/13196558/"
 ```
 
 ---
