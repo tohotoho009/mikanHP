@@ -455,6 +455,52 @@
     }
     .footer-copy { font-size: 11px; color: var(--color-muted-soft); letter-spacing: 0.08em; }
 
+    /* ===== Reserve Form ===== */
+    .reserve-form { margin-bottom: var(--sp-lg); }
+    .form-row { margin-bottom: var(--sp-md); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-md); }
+    .form-label {
+      display: block; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; color: var(--color-muted);
+      margin-bottom: var(--sp-xs);
+    }
+    .form-required { color: var(--color-primary); }
+    .form-input {
+      width: 100%;
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-hairline);
+      color: var(--color-ink);
+      font-family: var(--font-sans); font-size: 14px;
+      padding: 10px var(--sp-md);
+      outline: none; transition: border-color 0.2s;
+      -webkit-appearance: none; appearance: none; border-radius: 0;
+    }
+    .form-input:focus { border-color: var(--color-primary); }
+    .form-input::placeholder { color: var(--color-muted-soft); }
+    select.form-input {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6' fill='%238a8070'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+      padding-right: 36px; cursor: pointer;
+    }
+    .form-textarea { resize: vertical; min-height: 80px; line-height: 1.7; }
+    .form-submit { width: 100%; margin-top: var(--sp-md); cursor: pointer; font-family: var(--font-sans); }
+    .form-result {
+      display: none; font-size: 13px; letter-spacing: 0.05em;
+      margin-top: var(--sp-md); padding: var(--sp-sm) var(--sp-md); line-height: 1.7;
+    }
+    .form-result-ok    { display: block; color: var(--color-primary); border: 1px solid var(--color-primary); }
+    .form-result-error { display: block; color: var(--color-muted);   border: 1px solid var(--color-hairline); }
+    .reserve-alt {
+      font-size: 12px; color: var(--color-muted);
+      letter-spacing: 0.05em; margin-top: var(--sp-lg); text-align: center;
+    }
+    .reserve-alt a {
+      color: var(--color-primary);
+      border-bottom: 1px solid rgba(200,169,110,0.35); padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+    .reserve-alt a:hover { border-color: var(--color-primary); }
+
     /* ===== Responsive ===== */
     @media (max-width: 1024px) {
       .nav, .hero { padding-left: var(--sp-xl); padding-right: var(--sp-xl); }
@@ -478,6 +524,7 @@
       .alacarte-item:nth-child(even) { padding-left: 0; border-left: none; }
       .reserve-grid { grid-template-columns: 1fr; }
       .reserve-deco { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
       .access-grid { grid-template-columns: 1fr; }
       .footer { flex-direction: column; gap: var(--sp-md); text-align: center; }
     }
@@ -652,8 +699,6 @@
       <p class="section-label">reservation</p>
       <h2 class="section-title">ご予約・<br>お問い合わせ</h2>
       <div class="gold-line"></div>
-      <p class="reserve-body">ご予約はInstagramのDMよりお気軽にどうぞ。
-少人数のお一人様から宴会まで承ります。</p>
       <div class="reserve-info">
         <div class="reserve-row">
           <span class="reserve-label">営業時間</span>
@@ -664,10 +709,7 @@
         </div>
         <div class="reserve-row">
           <span class="reserve-label">定休日</span>
-          <div>
-            <div class="reserve-value">不定休</div>
-            <div class="reserve-sub">不定休あり</div>
-          </div>
+          <div><div class="reserve-value">不定休</div></div>
         </div>
         <div class="reserve-row">
           <span class="reserve-label">予算</span>
@@ -676,18 +718,46 @@
             <div class="reserve-sub">お一人様・夜</div>
           </div>
         </div>
-        <div class="reserve-row">
-          <span class="reserve-label">SNS</span>
-          <div>
-            <div class="reserve-value">@wabarmikan</div>
-            <div class="reserve-sub">Instagram DM予約可</div>
+      </div>
+      <form class="reserve-form" id="reserveForm" novalidate>
+        <div class="form-row">
+          <label class="form-label">お名前 <span class="form-required">*</span></label>
+          <input class="form-input" type="text" name="name" required placeholder="山田 太郎">
+        </div>
+        <div class="form-row">
+          <label class="form-label">人数 <span class="form-required">*</span></label>
+          <input class="form-input" type="number" name="people" required min="1" max="20" placeholder="2">
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label class="form-label">希望日 <span class="form-required">*</span></label>
+            <input class="form-input" type="date" name="date" required>
+          </div>
+          <div class="form-row">
+            <label class="form-label">希望時間 <span class="form-required">*</span></label>
+            <select class="form-input" name="time" required>
+              <option value="">選択</option>
+              <option>17:00</option><option>17:30</option>
+              <option>18:00</option><option>18:30</option>
+              <option>19:00</option><option>19:30</option>
+              <option>20:00</option><option>20:30</option>
+              <option>21:00</option><option>21:30</option>
+              <option>22:00</option>
+            </select>
           </div>
         </div>
-      </div>
-      <div class="reserve-buttons">
-        <a href="https://www.instagram.com/wabarmikan/" target="_blank" rel="noopener" class="btn-primary">Instagram でご予約</a>
-        <a href="https://tabelog.com/tokyo/A1321/A132101/13196558/" target="_blank" rel="noopener" class="btn-ghost">食べログを見る</a>
-      </div>
+        <div class="form-row">
+          <label class="form-label">連絡先 <span class="form-required">*</span></label>
+          <input class="form-input" type="text" name="contact" required placeholder="電話番号 / LINE ID / Instagram ID">
+        </div>
+        <div class="form-row">
+          <label class="form-label">ご要望・備考</label>
+          <textarea class="form-input form-textarea" name="notes" placeholder="アレルギー・席のご希望など"></textarea>
+        </div>
+        <button type="submit" class="btn-primary form-submit">予約リクエストを送る</button>
+        <div class="form-result" id="formResult"></div>
+      </form>
+      <p class="reserve-alt">または <a href="https://www.instagram.com/wabarmikan/" target="_blank" rel="noopener">Instagram DM</a> でもご予約いただけます</p>
     </div>
     <div class="reserve-deco">
       <div class="reserve-deco-title">今夜だけの<br>一皿を、<br>あなたへ。</div>
@@ -767,6 +837,37 @@
   menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
   mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  const reserveForm = document.getElementById('reserveForm');
+  const formResult  = document.getElementById('formResult');
+
+  reserveForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = reserveForm.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = '送信中…';
+    formResult.className = 'form-result';
+
+    const data = Object.fromEntries(new FormData(reserveForm));
+
+    try {
+      const res = await fetch('/api/reserve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error();
+      formResult.textContent = 'リクエストを受け付けました。内容確認後にご連絡いたします。';
+      formResult.className = 'form-result form-result-ok';
+      reserveForm.reset();
+    } catch {
+      formResult.textContent = '送信に失敗しました。お手数ですがInstagram DMよりご連絡ください。';
+      formResult.className = 'form-result form-result-error';
+    }
+
+    btn.disabled = false;
+    btn.textContent = '予約リクエストを送る';
   });
 </script>
 

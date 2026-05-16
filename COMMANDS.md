@@ -37,6 +37,57 @@ node gen-pdf.js
 
 ---
 
+## 予約フォーム LINE通知の初期設定
+
+予約フォームからLINEに通知が届くには、2つの環境変数が必要です。
+
+### Step 1 — LINE Messaging APIチャネルを作成
+
+1. https://developers.line.biz/ を開き、LINEアカウントでログイン
+2. 「プロバイダー作成」→ 名前（例: `mikan`）
+3. 「チャネル作成」→「Messaging API」を選択
+4. チャネル名（例: `未完予約bot`）・説明を入力して作成
+5. 「Messaging API設定」タブ →「チャネルアクセストークン」→「発行」→ **コピーして保存**
+
+### Step 2 — オーナーにBotを友だち追加してもらう
+
+1. 同じページの「Messaging API設定」タブにあるQRコードをオーナーに送る
+2. オーナーがQRコードを読み取って友だち追加する
+3. オーナーがBotに「よろしく」など何でもメッセージを送ってもらう
+
+### Step 3 — オーナーのUser IDを取得する
+
+1. LINE Developersの「Messaging API設定」→「Webhook URL」に以下を設定:
+   `https://mikan-hp.vercel.app/api/line-webhook`
+2. 「Webhookの利用」をONにする・「検証」ボタンで確認
+3. オーナーがBotにメッセージを送ると、Vercelのログに User ID が出力される
+4. Vercelのログ確認: https://vercel.com/tohotoho009-7306s-projects/mikan-hp/logs
+   → `LINE User ID: Uxxxxxxxxxx` という行をコピー
+
+### Step 4 — Vercel に環境変数を設定する
+
+```bash
+# Step 1で取得したトークン
+vercel env add LINE_CHANNEL_ACCESS_TOKEN production
+
+# Step 3で取得したUser ID
+vercel env add LINE_OWNER_USER_ID production
+```
+
+または Vercel ダッシュボードの「Settings → Environment Variables」から追加してもOK。
+
+### Step 5 — 動作確認して完了
+
+```bash
+# 環境変数を反映するため再デプロイ
+vercel --prod
+```
+
+HPの予約フォームから送信してオーナーのLINEに届けば完了。
+完了後、`api/line-webhook.js` は不要なので削除してよい。
+
+---
+
 ## Google ビジネスプロフィールの開設手順
 
 ### Step 1 — アカウント作成・ログイン
