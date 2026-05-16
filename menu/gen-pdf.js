@@ -6,6 +6,7 @@ const targets = [
   { html: 'menu-plan-a.html', pdf: '../menu-plan-a.pdf' },
   { html: 'menu-plan-b.html', pdf: '../menu-plan-b.pdf' },
   { html: 'menu-plan-c.html', pdf: '../menu-plan-c.pdf' },
+  { html: 'menu-plan-d.html', pdf: '../menu-plan-d.pdf' },
 ];
 
 (async () => {
