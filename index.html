@@ -50,6 +50,7 @@
     ]
   }
   </script>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
@@ -272,6 +273,21 @@
     .concept-image { aspect-ratio: 4/5; overflow: hidden; }
     .concept-image img { transition: transform 0.7s ease; }
     .concept-image:hover img { transform: scale(1.04); }
+    .concept-hinai {
+      margin-top: var(--sp-xl);
+      padding-top: var(--sp-xl);
+      border-top: 1px solid var(--color-hairline);
+    }
+    .concept-hinai-label {
+      font-family: var(--font-en);
+      font-size: 11px; letter-spacing: 0.2em;
+      color: var(--color-primary); text-transform: uppercase;
+      margin-bottom: var(--sp-sm);
+    }
+    .concept-hinai-text {
+      font-size: 13px; color: var(--color-muted);
+      line-height: 2; letter-spacing: 0.04em;
+    }
 
     /* ===== Gallery ===== */
     .gallery-inner { max-width: 1200px; margin: 0 auto; }
@@ -456,6 +472,13 @@
     }
     .footer-copy { font-size: 11px; color: var(--color-muted-soft); letter-spacing: 0.08em; }
 
+    .reserve-occasion {
+      font-size: 13px; color: var(--color-muted);
+      letter-spacing: 0.05em; line-height: 1.8;
+      margin-bottom: var(--sp-xl);
+      padding-left: var(--sp-md);
+      border-left: 2px solid var(--color-primary);
+    }
     /* ===== Reserve Form ===== */
     .reserve-form { margin-bottom: var(--sp-lg); }
     .form-row { margin-bottom: var(--sp-md); }
@@ -586,6 +609,10 @@
         <p>江古田の静かな路地に佇む、<br>比内地鶏の焼き鳥を専門とした一軒。<br>日本三大地鶏のひとつ、秋田・比内地鶏を<br>炭火でじっくりと焼き上げる。</p>
         <p>「未完」とは、常に進化し続ける姿勢のこと。<br>毎夜、鮮度にこだわった比内地鶏と向き合い、<br>今夜だけの一串をお届けします。</p>
         <p>気取らず、でも真剣に。<br>江古田の夜に、ふらりと寄れる焼き鳥店。</p>
+      </div>
+      <div class="concept-hinai">
+        <p class="concept-hinai-label">Hinai Jidori</p>
+        <p class="concept-hinai-text">秋田県で育つ比内地鶏は、日本三大地鶏のひとつ。<br>旨味と歯応えが際立つ赤身の肉質と、濃厚なコクが特徴。<br>生産量が少なく希少ながら、その滋味深い風味は<br>炭火焼きでこそ真価を発揮する。</p>
       </div>
     </div>
     <div class="concept-image">
@@ -720,6 +747,7 @@
           </div>
         </div>
       </div>
+      <p class="reserve-occasion">デートや会食、記念日のご利用もお気軽にどうぞ。</p>
       <form class="reserve-form" id="reserveForm" novalidate>
         <div class="form-row">
           <label class="form-label">お名前 <span class="form-required">*</span></label>
