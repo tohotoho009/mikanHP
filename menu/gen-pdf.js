@@ -14,8 +14,8 @@ const path = require('path');
 
   await page.pdf({
     path: path.resolve(__dirname, '../menu.pdf'),
-    format: 'A4',
-    landscape: false,
+    width: '119mm',
+    height: '261mm',
     printBackground: true,
     margin: { top: 0, right: 0, bottom: 0, left: 0 }
   });
