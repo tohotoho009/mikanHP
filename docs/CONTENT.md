@@ -19,7 +19,7 @@ access:
 hours:      "月〜日 17:00〜24:00（L.O. 23:30）"
 closed:     "不定休あり"
 budget:     "¥4,000〜4,999（お一人様・夜）"
-phone:      ""   # 要確認・追加
+phone:      "03-3557-2122"
 instagram:  "https://www.instagram.com/wabarmikan/"
 tabelog:    "https://tabelog.com/tokyo/A1321/A132101/13196558/"
 ```
