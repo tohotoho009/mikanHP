@@ -125,6 +125,8 @@ images:
 
 ### Menu
 
+> ソースファイル：`menu/menu.html` を編集 → `node menu/gen-pdf.js` で再生成
+
 ```yaml
 section_label: "menu"
 section_title: "お品書き"
@@ -133,20 +135,21 @@ footer_note: |
   メニューの詳細・最新情報は食べログ・Instagramをご確認ください
   アレルギーのある方はご来店前にお知らせください
 
+# ── コース ──────────────────────────
 courses:
   - en: "Omakase Course"
     title: "おまかせコース"
-    dishes: 12
+    dishes: 12                 # TODO: オーナーに確認（12品 or 7品？）
     menu:
       - "前菜"
       - "焼き物"
       - "一品料理"
       - "季節の土鍋御飯"
-    price: "¥ 3,850"
+    price: "¥ 3,850"           # 税込（総額表示）
     price_note: "税込 / 税抜 ¥ 3,500"
 
-
-alacarte:
+# ── アラカルト（要確認）────────────────
+alacarte:                      # TODO: オーナーに実際の内容・価格を確認
   - name: "刺身盛り合わせ"
     price: "時価"
   - name: "だし巻き玉子"
@@ -159,10 +162,52 @@ alacarte:
     price: "¥ 660"
   - name: "冷やしトマト"
     price: "¥ 440"
+
+# ── ドリンク（menu/menu.html と同期済み・すべて税込）──
+drinks:
+  beer:
+    - { name: "生ビール",   sub: "サッポロ黒ラベル",    price: "¥ 550" }
+    - { name: "瓶ビール",   sub: "サッポロ赤星 中ビン", price: "¥ 700" }
+
+  shochu_mix:
+    - { name: "緑茶ハイ",     price: "¥ 480" }
+    - { name: "ウーロンハイ", price: "¥ 480" }
+    - { name: "レモンサワー", price: "¥ 580" }
+
+  shochu_mugi:
+    - { name: "佐藤", price: "¥ 680" }
+    - { name: "兼人", price: "¥ 680" }
+
+  shochu_imo:
+    - { name: "赤兎馬",   price: "¥ 600" }
+    - { name: "侍士の門", price: "¥ 650" }
+    - { name: "魔王",     price: "¥ 900" }
+    - { name: "森伊蔵",   price: "¥ 1,500" }
+
+  sake:
+    - { name: "東洋美人", sub: "山口 純米吟醸 大辛口", price: "¥ 850" }
+    - { name: "星自慢",   sub: "福島 純米",           price: "¥ 1,000" }
+    - { name: "田光",     sub: "三重 純米吟醸",       price: "¥ 1,200" }
+    - { name: "飛露喜",   sub: "福島 特別純米",       price: "¥ 1,200" }
+    - { name: "花邑",     sub: "秋田 純米吟醸",       price: "¥ 1,300" }
+
+  wine_glass:
+    - { name: "グラスワイン 白", price: "¥ 700" }
+    - { name: "グラスワイン 赤", price: "¥ 700" }
+
+  wine_bottle_white:
+    - { name: "プレン・シュッド 2024",    sub: "フランス",        price: "¥ 5,800" }
+    - { name: "ルネ・ド・ラ・クレイ 2022", sub: "シャブリ フランス", price: "¥ 8,000" }
+
+  wine_bottle_red:
+    - { name: "オリゾン・ド・ビジョー", sub: "ピノ・ワール フランス", price: "¥ 5,500" }
+
+  spirits:
+    - { name: "AKAYANE", sub: "山椒", price: "¥ 680" }
 ```
 
-> ⚠️ **要確認**：食べログに37品・コース6種のメニューが掲載されている。
-> 実際の内容・価格はオーナーに確認の上、このファイルを更新すること。
+> ⚠️ **要確認**：コース品数（12品 or 7品）、アラカルト食事メニューの内容・価格をオーナーに確認すること。
+> ドリンク価格は税込として掲載済み。
 
 ---
 
