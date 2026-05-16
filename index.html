@@ -3,13 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>未完 — 江古田</title>
-  <meta name="description" content="江古田の焼き鳥「未完」。日本三大地鶏・比内地鶏の焼き鳥を専門とした一軒。炭火でじっくりと。東京都練馬区栄町4-9。">
-  <meta property="og:title" content="未完 — 江古田">
-  <meta property="og:description" content="比内地鶏の焼き鳥を専門とした一軒。江古田駅南口 徒歩5分。">
+  <title>未完（みかん）| 江古田の比内地鶏 焼き鳥専門店</title>
+  <meta name="description" content="東京・江古田の焼き鳥専門店「未完」。日本三大地鶏・秋田比内地鶏を炭火でじっくりと。練馬区栄町4-9、江古田駅南口 徒歩5分。17:00〜24:00営業。">
+  <link rel="canonical" href="https://mikan-hp.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mikan-hp.vercel.app/">
+  <meta property="og:site_name" content="未完">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="未完（みかん）| 江古田の比内地鶏 焼き鳥専門店">
+  <meta property="og:description" content="東京・江古田の焼き鳥専門店「未完」。日本三大地鶏・秋田比内地鶏を炭火でじっくりと。練馬区栄町4-9、江古田駅南口 徒歩5分。17:00〜24:00営業。">
   <meta property="og:image" content="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg">
-  <meta property="og:type" content="restaurant">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="未完（みかん）| 江古田の比内地鶏 焼き鳥専門店">
+  <meta name="twitter:description" content="東京・江古田の焼き鳥専門店「未完」。日本三大地鶏・秋田比内地鶏を炭火でじっくりと。練馬区栄町4-9、江古田駅南口 徒歩5分。">
+  <meta name="twitter:image" content="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "未完",
+    "alternateName": "みかん",
+    "url": "https://mikan-hp.vercel.app/",
+    "description": "江古田の焼き鳥専門店。日本三大地鶏・秋田比内地鶏を炭火でじっくりと焼き上げる。",
+    "image": "https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "栄町4-9",
+      "addressLocality": "練馬区",
+      "addressRegion": "東京都",
+      "postalCode": "176-0001",
+      "addressCountry": "JP"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "17:00",
+        "closes": "24:00"
+      }
+    ],
+    "servesCuisine": ["焼き鳥", "比内地鶏", "日本料理"],
+    "priceRange": "¥¥",
+    "sameAs": [
+      "https://www.instagram.com/wabarmikan/",
+      "https://tabelog.com/tokyo/A1321/A132101/13196558/"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
@@ -321,8 +361,9 @@
     .alacarte-item:nth-child(even) { padding-left: var(--sp-xxl); border-left: 1px solid var(--color-hairline); }
     .alacarte-name { font-size: 14px; font-weight: 500; color: var(--color-body); letter-spacing: 0.05em; }
     .alacarte-price { font-family: var(--font-en); font-size: 15px; color: var(--color-primary); white-space: nowrap; }
+    .menu-pdf { margin-bottom: var(--sp-xl); }
     .menu-note-bottom {
-      margin-top: var(--sp-xl); font-size: 12px; color: var(--color-muted-soft);
+      margin-top: 0; font-size: 12px; color: var(--color-muted-soft);
       letter-spacing: 0.05em; line-height: 1.9;
       border-top: 1px solid var(--color-hairline); padding-top: var(--sp-lg);
     }
@@ -500,7 +541,7 @@
       </div>
     </div>
     <div class="concept-image">
-      <img src="images/tennai.jpg" alt="未完 店内">
+      <img src="images/tennai.jpg" alt="未完 店内" loading="lazy">
     </div>
   </div>
 </section>
@@ -512,27 +553,27 @@
     <h2 class="section-title">料理・店内</h2>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="images/kanban.jpg" alt="看板">
+        <img src="images/kanban.jpg" alt="未完 看板" loading="lazy">
         <div class="gallery-caption">未完</div>
       </div>
       <div class="gallery-item">
-        <img src="images/tennai.jpg" alt="店内">
+        <img src="images/tennai.jpg" alt="未完 店内" loading="lazy">
         <div class="gallery-caption">店内</div>
       </div>
       <div class="gallery-item">
-        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg" alt="料理">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628468.jpg" alt="比内地鶏 焼き鳥" loading="lazy">
         <div class="gallery-caption">本日の一品</div>
       </div>
       <div class="gallery-item">
-        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628341.jpg" alt="料理">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628341.jpg" alt="旬の素材 料理" loading="lazy">
         <div class="gallery-caption">旬の素材</div>
       </div>
       <div class="gallery-item">
-        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628312.jpg" alt="料理">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628312.jpg" alt="季節の肴" loading="lazy">
         <div class="gallery-caption">季節の肴</div>
       </div>
       <div class="gallery-item">
-        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628492.jpg" alt="料理">
+        <img src="https://tblg.k-img.com/restaurant/images/Rvw/102628/640x640_rect_102628492.jpg" alt="季節の一品" loading="lazy">
         <div class="gallery-caption">季節の一品</div>
       </div>
     </div>
@@ -594,6 +635,9 @@
       </div>
     </div>
 
+    <div class="menu-pdf">
+      <a href="menu.pdf" target="_blank" rel="noopener" class="btn-ghost">お品書き全ページ（PDF）</a>
+    </div>
     <div class="menu-note-bottom">
       メニューの詳細・最新情報は食べログ・Instagramをご確認ください。<br>
       アレルギーのある方はご来店前にお知らせください。
