@@ -291,6 +291,7 @@
       opacity: 0; transition: opacity 0.3s;
     }
     .gallery-item:hover .gallery-caption { opacity: 1; }
+    .gallery-item a { display: block; width: 100%; height: 100%; }
     .gallery-footer {
       text-align: center; font-size: 13px;
       color: var(--color-muted); letter-spacing: 0.05em;
@@ -842,6 +843,24 @@
   mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
+
+  // Instagram ギャラリー動的ロード（失敗時は静的画像を維持）
+  (async () => {
+    try {
+      const r = await fetch('/api/instagram');
+      if (!r.ok) return;
+      const { posts } = await r.json();
+      if (!posts?.length) return;
+      const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+      document.querySelector('.gallery-grid').innerHTML = posts.map(p => `
+        <div class="gallery-item">
+          <a href="${p.href}" target="_blank" rel="noopener">
+            <img src="${p.src}" alt="${esc(p.caption)}" loading="lazy">
+            <div class="gallery-caption">${esc(p.caption)}</div>
+          </a>
+        </div>`).join('');
+    } catch {}
+  })();
 
   const reserveForm = document.getElementById('reserveForm');
   const formResult  = document.getElementById('formResult');

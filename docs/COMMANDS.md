@@ -37,6 +37,67 @@ node posters/gen-pdf.js
 
 ---
 
+## Instagram ギャラリー自動同期の初期設定
+
+Instagram の最新投稿がギャラリーに自動反映されるようにするための1回限りの設定。
+
+### 前提条件
+- `@wabarmikan` が **ビジネスアカウントまたはクリエイターアカウント** であること
+  （個人アカウントの場合：Instagram設定 → アカウント → プロフェッショナルアカウントに切り替え）
+- Facebookページと連携済みであること
+
+### Step 1 — Facebook Developer App を作成
+
+1. https://developers.facebook.com/ を開く
+2. 「マイアプリ」→「アプリを作成」→「その他」→「ビジネス」
+3. アプリ名（例: `mikan-instagram`）を入力して作成
+
+### Step 2 — Instagram Graph API を追加
+
+1. 作成したアプリのダッシュボードで「製品を追加」
+2. 「Instagram Graph API」を追加
+3. 左メニュー「Instagram Graph API」→「設定」→「ベーシック表示」を有効化
+
+### Step 3 — アクセストークンを取得
+
+1. Facebookアプリの「ツール」→「グラフAPIエクスプローラー」を開く
+2. 右上のドロップダウンで作成したアプリを選択
+3. 「アクセストークンを生成」→ `instagram_business_basic` にチェック
+4. 生成されたトークンをコピー（短期トークン・1時間有効）
+
+### Step 4 — 長期トークンに交換（60日有効）
+
+```bash
+# APP_ID と APP_SECRET は Facebook Developer ダッシュボードで確認
+curl "https://graph.instagram.com/access_token
+  ?grant_type=ig_exchange_token
+  &client_id={APP_ID}
+  &client_secret={APP_SECRET}
+  &access_token={短期トークン}"
+```
+
+返ってきた `access_token` をコピー。
+
+### Step 5 — Vercel に環境変数を設定
+
+```bash
+vercel env add INSTAGRAM_ACCESS_TOKEN production
+# プロンプトにトークンを貼り付けてEnter
+vercel --prod
+```
+
+### 動作確認
+
+https://mikan-hp.vercel.app にアクセスして、ギャラリーが Instagram の最新投稿に切り替われば完了。
+
+### トークンの自動更新について
+
+GitHub Actions の `refresh-instagram-token.yml` が **毎月1日に自動実行** され、
+トークンの有効期限（60日）を延長・Vercel を自動デプロイします。
+設定後は手動管理不要。
+
+---
+
 ## 予約フォーム LINE通知の初期設定
 
 予約フォームからLINEに通知が届くには、2つの環境変数が必要です。

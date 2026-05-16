@@ -1,0 +1,61 @@
+name: Refresh Instagram Token
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # 毎月1日 0:00 UTC（トークン有効期限60日のため月1更新）
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refresh token and update Vercel env
+        run: |
+          # Vercel から現在のトークンIDを取得
+          ENVS=$(curl -sf \
+            -H "Authorization: Bearer $VERCEL_TOKEN" \
+            "https://api.vercel.com/v9/projects/$VERCEL_PROJECT_ID/env?teamId=$VERCEL_ORG_ID")
+
+          ENV_ID=$(echo "$ENVS" | node -e "
+            let d=''; process.stdin.on('data',c=>d+=c).on('end',()=>{
+              const e = JSON.parse(d).envs.find(e=>e.key==='INSTAGRAM_ACCESS_TOKEN');
+              process.stdout.write(e?.id||'');
+            })")
+
+          if [ -z "$ENV_ID" ]; then echo "INSTAGRAM_ACCESS_TOKEN not found in Vercel"; exit 1; fi
+
+          # トークンの現在値を復号して取得
+          CURRENT=$(curl -sf \
+            -H "Authorization: Bearer $VERCEL_TOKEN" \
+            "https://api.vercel.com/v9/projects/$VERCEL_PROJECT_ID/env/$ENV_ID?decrypt=1&teamId=$VERCEL_ORG_ID" | \
+            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>process.stdout.write(JSON.parse(d).value))")
+
+          # Instagram でトークンを更新（有効期限リセット）
+          NEW=$(curl -sf \
+            "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$CURRENT" | \
+            node -e "let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{
+              const t=JSON.parse(d).access_token;
+              if(!t){console.error('Refresh failed');process.exit(1);}
+              process.stdout.write(t);
+            })")
+
+          # Vercel の環境変数を更新
+          curl -sf -X PATCH \
+            -H "Authorization: Bearer $VERCEL_TOKEN" \
+            -H "Content-Type: application/json" \
+            "https://api.vercel.com/v9/projects/$VERCEL_PROJECT_ID/env/$ENV_ID?teamId=$VERCEL_ORG_ID" \
+            -d "{\"value\":\"$NEW\"}"
+
+          echo "Token refreshed successfully"
+        env:
+          VERCEL_TOKEN:      ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID:     ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: Redeploy to apply new token
+        run: |
+          npm install -g vercel@latest
+          vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID:     ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
