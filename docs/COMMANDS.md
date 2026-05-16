@@ -26,6 +26,19 @@
 
 ---
 
+## PDF生成（品書き）
+
+```bash
+# menu/menu.html → menu.pdf を再生成
+node menu/gen-pdf.js
+```
+
+出力先：`menu.pdf`（本番URL: https://mikan-hp.vercel.app/menu.pdf）
+
+メニュー内容・価格を変更したい場合は `menu/menu.html` を編集してから実行する。
+
+---
+
 ## PDF生成（ポスター）
 
 ```bash
