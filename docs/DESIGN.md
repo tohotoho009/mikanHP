@@ -283,3 +283,66 @@ components:
 - 白背景を使わない（和紙白は反転セクション限定）
 - ウェイトを上げて強調しない——字間・サイズ・金色で強調する
 - 4色目のアクセントカラーを追加しない
+
+---
+
+## 印刷物デザイン
+
+HPとは別に、ポスター・メニューPDFは**和紙ライト**の配色を使う。
+Webの炭キャンバスを反転させたもので、同じブランドトークンを引き継ぐ。
+
+### ポスター（`posters/`）
+
+```
+poster:
+  source: "posters/poster-landscape-light.html"
+  output: "posters/poster-landscape-light.pdf"
+  size: "A4 横（1123×794px）"
+  generate: "node posters/gen-pdf.js"
+
+  colors:
+    canvas:  "#f7f3ec"          # 和紙白 — 背景
+    ink:     "#1a1510"          # 炭黒 — 見出し
+    body:    "#3a3028"          # 本文
+    muted:   "#7a6e60"          # 補足
+    gold:    "#9a7440"          # アクセント・罫線
+    line:    "rgba(154,116,64,0.25)"
+
+  fonts:
+    serif:  "Noto Serif JP"     # 見出し・店名
+    sans:   "Noto Sans JP"      # 本文・情報
+    en:     "Cormorant Garamond" # 英字・価格
+
+  layout:
+    orientation: "landscape"
+    content_area: "中央寄せ、左右パネル構成"
+```
+
+### 品書き・メニューPDF（`menu/`）
+
+```
+menu:
+  source: "menu/menu.html"
+  output: "menu.pdf"            # Vercel公開: /menu.pdf
+  size: "中紙 119×261mm（縦）"
+  generate: "node menu/gen-pdf.js"
+
+  colors:
+    canvas:  "#f5f0e6"          # 和紙白 — 背景
+    ink:     "#1a1510"          # 文字
+    muted:   "#7a6858"          # サブテキスト・産地
+    gold:    "rgba(140,100,50,0.55)"  # 枠線・区切り
+    stamp:   "#b03030"          # 印鑑（赤）
+
+  fonts:
+    serif:  "Noto Serif JP"     # 全体
+
+  layout:
+    card_width:   "105mm"
+    card_height:  "247mm"
+    card_padding: "12mm 10mm"
+    corner: "菱形（rotate 45deg、9×9px）"
+    stamp:  "品書（赤枠、34×38px、底部中央）"
+
+  price_rule: "すべて税込表示。コースは税込価格をメインに税抜を補足。"
+```
