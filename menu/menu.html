@@ -18,11 +18,15 @@
       color: #1a1510;
     }
 
-    /* ── ページ ── */
+    /* ── ページ（和紙テクスチャ） ── */
     .page {
       width: 119mm;
       height: 261mm;
-      background: #f5f0e6;
+      /* 和紙：温かみのある生成り色 + SVGノイズで繊維感 */
+      background-color: #ede5d0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85 0.28' numOctaves='4' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23w)' opacity='0.09'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -36,31 +40,21 @@
     .card {
       width: 105mm;
       height: 247mm;
-      border: 1px solid rgba(140,100,50,0.55);
+      border: 1px solid rgba(120,85,35,0.45);
       position: relative;
       padding: 12mm 10mm 12mm;
       display: flex;
       flex-direction: column;
-      background-color: #f5f0e6;
-    }
-    /* 透かし：invert で黒背景→白に反転 → multiply で白が消えて文字だけ残る */
-    .card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('../images/mikan-logo.jpg') center / 65% auto no-repeat;
-      filter: invert(1);
-      opacity: 0.13;
-      mix-blend-mode: multiply;
+      background: transparent;
     }
 
     /* 四隅の菱形 */
     .corner {
       position: absolute;
       width: 9px; height: 9px;
-      border: 1px solid rgba(140,100,50,0.65);
+      border: 1px solid rgba(120,85,35,0.55);
       transform: rotate(45deg);
-      background: #f5f0e6;
+      background: transparent;
     }
     .corner-tl { top: -5px; left: -5px; }
     .corner-tr { top: -5px; right: -5px; }
