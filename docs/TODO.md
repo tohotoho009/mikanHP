@@ -2,6 +2,40 @@
 
 ---
 
+## 完了済み ✅
+
+### インフラ・公開
+- [x] **Vercel で本番公開** — https://mikan-hp.vercel.app
+- [x] **GitHub Actions 自動デプロイ** — push → Vercel 自動反映（`.github/workflows/deploy.yml`）
+- [x] **deploy.ps1 作成** — `./deploy.ps1 "メッセージ"` 1コマンドで git + デプロイ
+
+### SEO
+- [x] title / meta description 最適化
+- [x] OGP / Twitter Card 設定
+- [x] JSON-LD 構造化データ（Restaurant スキーマ）
+- [x] canonical URL 設定
+- [x] robots.txt 作成
+- [x] sitemap.xml 作成（index.html + menu.pdf）
+
+### HP 機能
+- [x] **メニューPDF 公開** — https://mikan-hp.vercel.app/menu.pdf
+- [x] **電話番号追加** — 03-3557-2122（クリックで電話できるリンク付き）
+- [x] **Googleマップ明度調整** — ピンが見えるよう brightness のみ・z=18
+- [x] **予約フォーム実装** — 名前・人数・日時・連絡先・備考（`api/reserve.js`）
+- [x] **LINE通知機能実装** — フォーム送信 → オーナーのLINEに通知
+- [x] **Instagram ギャラリー自動同期** — `api/instagram.js` + 静的フォールバック
+
+### 自動化
+- [x] **Instagram トークン自動更新** — 毎月1日 GitHub Actions で更新・再デプロイ
+
+### ドキュメント整備
+- [x] フォルダ構造整理（`docs/`・`posters/` サブディレクトリ）
+- [x] COMMANDS.md（日常操作コマンド集）
+- [x] MARKETING.md（フェーズ別マーケティング戦略）
+- [x] CLAUDE.md（AI作業ルール）
+
+---
+
 ## オーナーに依頼すること
 
 ### 🔴 急ぎ
