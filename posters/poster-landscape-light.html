@@ -194,7 +194,7 @@
     .course-wrap {
       background: var(--card);
       border: 1px solid var(--line);
-      padding: 16px 24px;
+      padding: 14px 20px 10px;
       position: relative;
     }
     .course-wrap::before {
@@ -204,65 +204,84 @@
       height: 2px;
       background: linear-gradient(to right, transparent, var(--gold), transparent);
     }
-    .course-top {
+
+    /* 時間帯ラベル */
+    .course-time {
+      font-family: var(--font-e);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /* 2コース並列 */
+    .course-pair {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 14px;
+      gap: 0;
+      margin-bottom: 12px;
+    }
+    .course-item-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+    }
+    .course-item-block + .course-item-block {
+      border-left: 1px solid var(--line);
     }
     .course-en {
       font-family: var(--font-e);
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 300;
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .course-name {
       font-family: var(--font-s);
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 300;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       color: var(--ink);
       line-height: 1.1;
+      margin-bottom: 3px;
     }
     .course-count {
-      margin-top: 6px;
       font-family: var(--font-e);
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.2em;
       color: var(--muted);
-    }
-    .course-price-block { text-align: right; }
-    .course-price-small {
-      font-family: var(--font-e);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .course-price {
       font-family: var(--font-e);
-      font-size: 38px;
+      font-size: 30px;
       font-weight: 300;
       letter-spacing: 0.02em;
       color: var(--gold);
       line-height: 1;
     }
-    .course-price-yen { font-size: 18px; vertical-align: super; }
+    .course-price-yen { font-size: 14px; vertical-align: super; }
     .course-price-note {
-      margin-top: 4px;
-      font-size: 10px;
-      letter-spacing: 0.08em;
+      margin-top: 3px;
+      font-size: 9px;
+      letter-spacing: 0.06em;
       color: var(--muted);
       font-family: var(--font-g);
     }
+
+    /* 献立 */
     .kondate-header {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .kondate-label {
       font-family: var(--font-s);
@@ -278,27 +297,55 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       background: var(--line);
+      margin-bottom: 10px;
     }
     .kondate-item {
       background: var(--card2);
       text-align: center;
-      padding: 8px 6px;
+      padding: 7px 4px;
     }
     .kondate-item-text {
       font-family: var(--font-s);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 400;
       letter-spacing: 0.12em;
       color: var(--ink);
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
     .kondate-item-num {
       font-family: var(--font-e);
-      font-size: 9px;
+      font-size: 8px;
       font-weight: 300;
       letter-spacing: 0.18em;
       color: var(--muted);
+    }
+
+    /* 21時以降バー */
+    .late-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(154,116,64,0.08);
+      border: 1px solid var(--line);
+      padding: 6px 14px;
+    }
+    .late-time {
+      font-family: var(--font-e);
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .late-divider { width: 1px; height: 22px; background: var(--line); flex-shrink: 0; }
+    .late-content {
+      font-family: var(--font-s);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--body);
     }
 
     /* 予約ブロック */
@@ -496,18 +543,27 @@
 
       <!-- コースブロック -->
       <div class="course-wrap">
-        <div class="course-top">
-          <div class="course-title-block">
-            <div class="course-en">Omakase Course</div>
-            <div class="course-name">おまかせコース</div>
+
+        <div class="course-time">Open 〜 22:00 — Omakase Course</div>
+
+        <!-- 2コース並列 -->
+        <div class="course-pair">
+          <div class="course-item-block">
+            <div class="course-en">Standard</div>
+            <div class="course-name">おまかせ</div>
             <div class="course-count">全 12 品</div>
+            <div class="course-price"><span class="course-price-yen">¥</span>3,850</div>
+            <div class="course-price-note">税込 / 税抜 ¥3,500</div>
           </div>
-          <div class="course-price-block">
-            <div class="course-price-small">price per person</div>
-            <div class="course-price"><span class="course-price-yen">¥</span>3,500</div>
-            <div class="course-price-note">税抜 / 税込 ¥3,850・おひとり様</div>
+          <div class="course-item-block">
+            <div class="course-en">Premium</div>
+            <div class="course-name">おまかせ</div>
+            <div class="course-count">全 16 品</div>
+            <div class="course-price"><span class="course-price-yen">¥</span>5,500</div>
+            <div class="course-price-note">税込 / 税抜 ¥5,000</div>
           </div>
         </div>
+
         <div class="kondate-header">
           <div class="kondate-label">献　立</div>
           <div class="kondate-rule"></div>
@@ -526,10 +582,18 @@
             <span class="kondate-item-num">A la carte</span>
           </div>
           <div class="kondate-item">
-            <span class="kondate-item-text">土鍋御飯</span>
-            <span class="kondate-item-num">Clay Pot Rice</span>
+            <span class="kondate-item-text">〆物 / 土鍋</span>
+            <span class="kondate-item-num">Closing Dish</span>
           </div>
         </div>
+
+        <!-- 21時以降 -->
+        <div class="late-bar">
+          <span class="late-time">21:00 以降</span>
+          <div class="late-divider"></div>
+          <span class="late-content">おまかせ 全5品 ¥2,200 ／ お茶漬け（鳥スープ・鯛・梅・チャンジャ・鮭・のり）</span>
+        </div>
+
       </div>
 
       <!-- 予約 -->

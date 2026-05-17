@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer-core');
 const path = require('path');
 
 const targets = [
-  { html: 'menu.html',        pdf: '../menu.pdf' },
+  { html: 'menu.html',        pdf: '../menu.pdf',   width: '109mm', height: '251mm' },
   { html: 'menu-plan-a.html', pdf: '../menu-plan-a.pdf' },
   { html: 'menu-plan-b.html', pdf: '../menu-plan-b.pdf' },
   { html: 'menu-plan-c.html', pdf: '../menu-plan-c.pdf' },
@@ -16,14 +16,14 @@ const targets = [
     args: ['--no-sandbox']
   });
 
-  for (const { html, pdf } of targets) {
+  for (const { html, pdf, width = '119mm', height = '261mm' } of targets) {
     const page = await browser.newPage();
     const url = 'file:///' + path.resolve(__dirname, html).replace(/\\/g, '/');
     await page.goto(url, { waitUntil: 'networkidle0' });
     await page.pdf({
       path: path.resolve(__dirname, pdf),
-      width: '119mm',
-      height: '261mm',
+      width,
+      height,
       printBackground: true,
       margin: { top: 0, right: 0, bottom: 0, left: 0 }
     });
