@@ -321,31 +321,92 @@
       color: var(--muted);
     }
 
-    /* 21時以降バー */
-    .late-bar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(154,116,64,0.08);
-      border: 1px solid var(--line);
-      padding: 6px 14px;
+    /* コース内 献立ミニグリッド */
+    .course-kondate { margin-top: 8px; width: 100%; }
+    .kondate-mini-label {
+      font-family: var(--font-s);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 4px;
     }
-    .late-time {
+    .kondate-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+    }
+    .kondate-mini-item {
+      background: var(--card2);
+      text-align: center;
+      padding: 5px 2px;
+      font-family: var(--font-s);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+
+    /* 21時以降セクション */
+    .late-section {
+      background: rgba(154,116,64,0.07);
+      border: 1px solid var(--line);
+      padding: 8px 14px;
+      margin-top: 8px;
+    }
+    .late-header {
       font-family: var(--font-e);
       font-size: 9px;
       font-weight: 300;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
       color: var(--gold);
-      white-space: nowrap;
-      flex-shrink: 0;
+      margin-bottom: 7px;
     }
-    .late-divider { width: 1px; height: 22px; background: var(--line); flex-shrink: 0; }
-    .late-content {
+    .late-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .late-block { display: flex; flex-direction: column; gap: 3px; }
+    .late-block-title {
       font-family: var(--font-s);
       font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--ink);
+    }
+    .late-block-price {
+      font-family: var(--font-e);
+      font-size: 16px;
       font-weight: 300;
-      letter-spacing: 0.15em;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+    .late-block-price-note {
+      font-family: var(--font-g);
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .late-block-dishes {
+      font-family: var(--font-s);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
       color: var(--body);
+      line-height: 1.7;
+    }
+    .late-block-items {
+      font-family: var(--font-s);
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--body);
+      line-height: 1.8;
     }
 
     /* 予約ブロック */
@@ -540,52 +601,69 @@
 
         <div class="course-time">Open 〜 22:00 — Omakase Course</div>
 
-        <!-- 2コース並列 -->
+        <!-- 2コース並列（各コース専用の献立付き） -->
         <div class="course-pair">
+
+          <!-- Standard 全12品 -->
           <div class="course-item-block">
             <div class="course-en">Standard</div>
             <div class="course-name">おまかせ</div>
             <div class="course-count">全 12 品</div>
             <div class="course-price"><span class="course-price-yen">¥</span>3,850</div>
             <div class="course-price-note">税込 / 税抜 ¥3,500</div>
+            <div class="course-kondate">
+              <div class="kondate-mini-label">献　立</div>
+              <div class="kondate-mini-grid">
+                <div class="kondate-mini-item">前菜</div>
+                <div class="kondate-mini-item">焼き物</div>
+                <div class="kondate-mini-item">一品料理</div>
+                <div class="kondate-mini-item">〆物</div>
+              </div>
+            </div>
           </div>
+
+          <!-- Premium 全16品 -->
           <div class="course-item-block">
             <div class="course-en">Premium</div>
             <div class="course-name">おまかせ</div>
             <div class="course-count">全 16 品</div>
             <div class="course-price"><span class="course-price-yen">¥</span>5,500</div>
             <div class="course-price-note">税込 / 税抜 ¥5,000</div>
+            <div class="course-kondate">
+              <div class="kondate-mini-label">献　立</div>
+              <div class="kondate-mini-grid">
+                <div class="kondate-mini-item">前菜</div>
+                <div class="kondate-mini-item">焼き物</div>
+                <div class="kondate-mini-item">一品料理</div>
+                <div class="kondate-mini-item">土鍋御飯</div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="kondate-header">
-          <div class="kondate-label">献　立</div>
-          <div class="kondate-rule"></div>
-        </div>
-        <div class="kondate-grid">
-          <div class="kondate-item">
-            <span class="kondate-item-text">前菜</span>
-            <span class="kondate-item-num">Starter</span>
-          </div>
-          <div class="kondate-item">
-            <span class="kondate-item-text">焼き物</span>
-            <span class="kondate-item-num">Grilled</span>
-          </div>
-          <div class="kondate-item">
-            <span class="kondate-item-text">一品料理</span>
-            <span class="kondate-item-num">A la carte</span>
-          </div>
-          <div class="kondate-item">
-            <span class="kondate-item-text">〆物 / 土鍋</span>
-            <span class="kondate-item-num">Closing Dish</span>
-          </div>
         </div>
 
         <!-- 21時以降 -->
-        <div class="late-bar">
-          <span class="late-time">21:00 以降</span>
-          <div class="late-divider"></div>
-          <span class="late-content">おまかせ 全5品 ¥2,200 ／ お茶漬け（鳥スープ・鯛・梅・チャンジャ・鮭・のり）</span>
+        <div class="late-section">
+          <div class="late-header">21:00 以降</div>
+          <div class="late-grid">
+
+            <div class="late-block">
+              <div class="late-block-title">おまかせ　全 5 品</div>
+              <div class="late-block-price"><span style="font-size:11px;vertical-align:super">¥</span>2,200</div>
+              <div class="late-block-price-note">税込 / 税抜 ¥2,000</div>
+              <div class="late-block-dishes">一品もの　2品<br>焼き物　3品</div>
+            </div>
+
+            <div class="late-block">
+              <div class="late-block-title">お茶漬け　各種</div>
+              <div class="late-block-items">
+                鳥スープ茶漬け<br>
+                梅 ／ チャンジャ ／ 鮭 ／ のり<br>
+                鯛茶漬け
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>
