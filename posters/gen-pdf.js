@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer-core');
+const path = require('path');
 
 (async () => {
   const browser = await puppeteer.launch({
@@ -13,10 +14,10 @@ const puppeteer = require('puppeteer-core');
 
   for (const f of files) {
     const page = await browser.newPage();
-    const url = 'file:///C:/project/mikanHP/posters/' + f.html;
+    const url = 'file:///' + path.resolve(__dirname, f.html).replace(/\\/g, '/');
     await page.goto(url, { waitUntil: 'networkidle0' });
     await page.pdf({
-      path: f.pdf,
+      path: path.resolve(__dirname, f.pdf),
       format: 'A4',
       landscape: f.landscape,
       printBackground: true,
