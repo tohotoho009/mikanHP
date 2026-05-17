@@ -94,49 +94,73 @@
       white-space: nowrap;
     }
 
-    /* ── P1: コース ── */
+    /* ── コースブロック共通 ── */
+    .time-label {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-align: center;
+      color: #8a7a68;
+      margin-bottom: 2mm;
+    }
+
+    .course-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 4mm;
+    }
     .course-name {
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 400;
       letter-spacing: 0.45em;
       text-align: center;
-      margin-bottom: 3mm;
+      margin-bottom: 1.5mm;
     }
     .course-price-main {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 300;
       letter-spacing: 0.3em;
       text-align: center;
       color: #1a1510;
-      margin-bottom: 1mm;
+      margin-bottom: 0.5mm;
     }
     .course-count {
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.2em;
       text-align: center;
       color: #5a4830;
-      margin-bottom: 1mm;
+      margin-bottom: 0.5mm;
     }
     .course-price-note {
-      font-size: 10px;
-      letter-spacing: 0.1em;
+      font-size: 9px;
+      letter-spacing: 0.08em;
       text-align: center;
       color: #8a7a68;
-      margin-bottom: 7mm;
+      margin-bottom: 2mm;
     }
-
     .course-dishes {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4mm;
-      margin-top: 1mm;
+      gap: 2mm;
     }
     .course-dish {
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 300;
-      letter-spacing: 0.45em;
+      letter-spacing: 0.35em;
     }
+
+    /* ── お茶漬け ── */
+    .ochazuke-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 1.5mm 0;
+      border-bottom: 1px solid rgba(26,21,16,0.08);
+    }
+    .ochazuke-item:last-child { border-bottom: none; }
+    .ochazuke-name { font-size: 13px; font-weight: 400; letter-spacing: 0.05em; }
+    .ochazuke-price { font-size: 12px; letter-spacing: 0.04em; white-space: nowrap; }
 
     /* 印鑑 */
     .stamp {
@@ -186,7 +210,7 @@
 </head>
 <body>
 
-<!-- ===== P1: コース ===== -->
+<!-- ===== P1: OPEN〜22時のコース ===== -->
 <div class="page">
   <div class="card">
     <span class="corner corner-tl"></span>
@@ -201,26 +225,108 @@
       <div class="heading-rule-line"></div>
     </div>
 
-    <div class="course-name">コ　ー　ス</div>
-    <div class="course-price-main">¥ 3,850</div>
-    <div class="course-count">全　十　二　品</div>
-    <div class="course-price-note">税込 ／ 税抜 ¥3,500</div>
+    <div class="time-label">OPEN 〜 22:00</div>
 
-    <div class="section-divider">
+    <!-- コース 1: 全12品 -->
+    <div class="course-block">
+      <div class="course-name">お　ま　か　せ</div>
+      <div class="course-price-main">¥ 3,850</div>
+      <div class="course-count">全　十　二　品</div>
+      <div class="course-price-note">税込 ／ 税抜 ¥3,500</div>
+      <div class="course-dishes">
+        <div class="course-dish">前　菜</div>
+        <div class="course-dish">焼　物</div>
+        <div class="course-dish">一 品 料 理</div>
+        <div class="course-dish">〆　物</div>
+      </div>
+    </div>
+
+    <div class="section-divider" style="margin: 3mm 0;">
       <div class="section-divider-line"></div>
-      <span class="section-divider-label">献　立</span>
+      <span class="section-divider-label">◇</span>
       <div class="section-divider-line"></div>
     </div>
 
-    <div class="course-dishes">
-      <div class="course-dish">前　菜</div>
-      <div class="course-dish">焼　物</div>
-      <div class="course-dish">一 品 料 理</div>
-      <div class="course-dish">季節の土鍋御飯</div>
+    <!-- コース 2: 全16品 -->
+    <div class="course-block">
+      <div class="course-name">お　ま　か　せ</div>
+      <div class="course-price-main">¥ 5,500</div>
+      <div class="course-count">全　十　六　品</div>
+      <div class="course-price-note">税込 ／ 税抜 ¥5,000</div>
+      <div class="course-dishes">
+        <div class="course-dish">前　菜</div>
+        <div class="course-dish">焼　物</div>
+        <div class="course-dish">一 品 料 理</div>
+        <div class="course-dish">季節の土鍋御飯</div>
+      </div>
     </div>
 
     <div class="stamp">
       <span class="stamp-text">品<br>書</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== P2: 21時以降のコース＋お茶漬け ===== -->
+<div class="page">
+  <div class="card">
+    <span class="corner corner-tl"></span>
+    <span class="corner corner-tr"></span>
+    <span class="corner corner-bl"></span>
+    <span class="corner corner-br"></span>
+
+    <div class="page-heading">品　書　き</div>
+    <div class="heading-rule">
+      <div class="heading-rule-line"></div>
+      <span class="heading-rule-diamond">◇</span>
+      <div class="heading-rule-line"></div>
+    </div>
+
+    <div class="time-label">21:00 以 降</div>
+
+    <!-- 夜コース: 全5品 -->
+    <div class="course-block" style="margin-bottom:3mm">
+      <div class="course-name">お　ま　か　せ</div>
+      <div class="course-price-main">¥ 2,200</div>
+      <div class="course-count">全　五　品</div>
+      <div class="course-price-note">税込 ／ 税抜 ¥2,000</div>
+      <div class="course-dishes">
+        <div class="course-dish">一品もの 2品</div>
+        <div class="course-dish">焼き物 3品</div>
+      </div>
+    </div>
+
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <span class="section-divider-label">お　茶　漬　け</span>
+      <div class="section-divider-line"></div>
+    </div>
+
+    <div class="tax-note" style="margin-top:2mm">表示価格はすべて税込です</div>
+
+    <div class="ochazuke-item">
+      <span class="ochazuke-name">鳥スープ茶漬け</span>
+      <span class="ochazuke-price">880円</span>
+    </div>
+    <div class="ochazuke-item">
+      <span class="ochazuke-name">梅茶漬け</span>
+      <span class="ochazuke-price">770円</span>
+    </div>
+    <div class="ochazuke-item">
+      <span class="ochazuke-name">チャンジャ茶漬け</span>
+      <span class="ochazuke-price">880円</span>
+    </div>
+    <div class="ochazuke-item">
+      <span class="ochazuke-name">鮭茶漬け</span>
+      <span class="ochazuke-price">770円</span>
+    </div>
+    <div class="ochazuke-item">
+      <span class="ochazuke-name">のり茶漬け</span>
+      <span class="ochazuke-price">770円</span>
+    </div>
+    <div class="ochazuke-item">
+      <span class="ochazuke-name">鯛茶漬け</span>
+      <span class="ochazuke-price">1,100円</span>
     </div>
   </div>
 </div>
