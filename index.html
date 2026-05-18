@@ -325,10 +325,14 @@
       font-size: 12px; color: var(--color-muted);
       letter-spacing: 0.05em; margin-bottom: var(--sp-xxl);
     }
+    .menu-time-label {
+      font-family: var(--font-en); font-size: 10px; font-weight: 300;
+      letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-muted);
+      margin-bottom: var(--sp-md);
+    }
     .menu-courses {
-      display: grid; grid-template-columns: 1fr;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: var(--sp-lg); margin-bottom: var(--sp-xxl);
-      max-width: 560px;
     }
     .course-card {
       background: var(--color-surface-card);
@@ -347,11 +351,16 @@
     }
     .course-title {
       font-family: var(--font-serif); font-size: 20px; font-weight: 400;
-      letter-spacing: 0.08em; color: var(--color-ink); margin-bottom: var(--sp-md);
+      letter-spacing: 0.08em; color: var(--color-ink); margin-bottom: var(--sp-sm);
     }
-    .course-desc {
+    .course-dishes {
+      font-size: 12px; color: var(--color-muted);
+      letter-spacing: 0.12em; margin-bottom: var(--sp-sm);
+    }
+    .course-menu-list {
       font-size: 13px; color: var(--color-muted);
-      line-height: 1.9; letter-spacing: 0.03em; margin-bottom: var(--sp-xl);
+      letter-spacing: 0.05em; line-height: 1.8;
+      margin-bottom: var(--sp-xl);
     }
     .course-price {
       font-family: var(--font-en); font-size: 24px; font-weight: 400;
@@ -368,7 +377,7 @@
       font-family: var(--font-en); font-size: 11px;
       letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-muted);
     }
-    .alacarte-grid { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .alacarte-grid { display: grid; grid-template-columns: repeat(2, 1fr); margin-bottom: var(--sp-xxl); }
     .alacarte-item {
       display: flex; justify-content: space-between; align-items: baseline;
       padding: var(--sp-md) 0; border-bottom: 1px solid var(--color-hairline);
@@ -378,6 +387,22 @@
     .alacarte-item:nth-child(even) { padding-left: var(--sp-xxl); border-left: 1px solid var(--color-hairline); }
     .alacarte-name { font-size: 14px; font-weight: 500; color: var(--color-body); letter-spacing: 0.05em; }
     .alacarte-price { font-family: var(--font-en); font-size: 15px; color: var(--color-primary); white-space: nowrap; }
+
+    .drink-section { margin-bottom: var(--sp-xxl); }
+    .drink-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--sp-xl) var(--sp-xxl); }
+    .drink-category-label {
+      font-family: var(--font-en); font-size: 10px; font-weight: 300;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-muted);
+      border-bottom: 1px solid var(--color-hairline); padding-bottom: var(--sp-sm);
+      margin-bottom: var(--sp-sm);
+    }
+    .drink-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: var(--sp-sm) 0; gap: var(--sp-lg);
+    }
+    .drink-name { font-size: 14px; color: var(--color-body); letter-spacing: 0.05em; }
+    .drink-sub { font-size: 11px; color: var(--color-muted); letter-spacing: 0.04em; display: block; margin-top: 1px; }
+    .drink-price { font-family: var(--font-en); font-size: 14px; color: var(--color-primary); white-space: nowrap; flex-shrink: 0; }
     .menu-pdf { margin-bottom: var(--sp-xl); }
     .menu-note-bottom {
       margin-top: 0; font-size: 12px; color: var(--color-muted-soft);
@@ -546,6 +571,7 @@
       .alacarte-grid { grid-template-columns: 1fr; }
       .alacarte-item:nth-child(odd)  { padding-right: 0; }
       .alacarte-item:nth-child(even) { padding-left: 0; border-left: none; }
+      .drink-categories { grid-template-columns: 1fr; }
       .reserve-grid { grid-template-columns: 1fr; }
       .reserve-deco { display: none; }
       .form-grid { grid-template-columns: 1fr; }
@@ -667,46 +693,202 @@
     <h2 class="section-title">お品書き</h2>
     <p class="menu-note-top">仕入れ状況により内容が変わる場合がございます</p>
 
-    <div class="menu-courses">
-      <div class="course-card">
-        <p class="course-en">Omakase Course</p>
-        <h3 class="course-title">おまかせコース</h3>
-        <p class="course-desc">旬の前菜から始まる全7品。その日の仕入れで組み立てる、未完ならではの一夜限りの構成。</p>
-        <div class="course-price">¥ 3,850</div>
-        <div class="course-price-note">税込 / 税抜 ¥3,500</div>
-      </div>
-    </div>
-
+    <!-- コース Open〜22:00 -->
     <div class="menu-sep">
       <div class="menu-sep-line"></div>
-      <span class="menu-sep-label">À la carte</span>
+      <span class="menu-sep-label">Omakase Course</span>
       <div class="menu-sep-line"></div>
     </div>
+    <p class="menu-time-label">Open 〜 22:00</p>
+    <div class="menu-courses">
+      <div class="course-card">
+        <p class="course-en">Standard</p>
+        <h3 class="course-title">おまかせコース</h3>
+        <p class="course-dishes">全 12 品</p>
+        <p class="course-menu-list">前菜 ／ 焼き物 ／ 一品料理 ／ 〆物</p>
+        <div class="course-price">¥ 3,500</div>
+        <div class="course-price-note">税抜 / 税込 ¥3,850</div>
+      </div>
+      <div class="course-card">
+        <p class="course-en">Premium</p>
+        <h3 class="course-title">おまかせコース</h3>
+        <p class="course-dishes">全 16 品</p>
+        <p class="course-menu-list">前菜 ／ 焼き物 ／ 一品料理 ／ 季節の土鍋御飯</p>
+        <div class="course-price">¥ 5,000</div>
+        <div class="course-price-note">税抜 / 税込 ¥5,500</div>
+      </div>
+    </div>
 
+    <!-- 21:00以降 -->
+    <p class="menu-time-label">21:00 以降</p>
+    <div class="menu-courses">
+      <div class="course-card">
+        <p class="course-en">Late Night</p>
+        <h3 class="course-title">おまかせコース</h3>
+        <p class="course-dishes">全 5 品</p>
+        <p class="course-menu-list">一品もの 2品 ／ 焼き物 3品</p>
+        <div class="course-price">¥ 2,000</div>
+        <div class="course-price-note">税抜 / 税込 ¥2,200</div>
+      </div>
+    </div>
+
+    <!-- お茶漬け -->
+    <div class="menu-sep">
+      <div class="menu-sep-line"></div>
+      <span class="menu-sep-label">お茶漬け — 21:00 以降</span>
+      <div class="menu-sep-line"></div>
+    </div>
     <div class="alacarte-grid">
       <div class="alacarte-item">
-        <span class="alacarte-name">刺身盛り合わせ</span>
-        <span class="alacarte-price">時価</span>
+        <span class="alacarte-name">鳥スープ茶漬け</span>
+        <span class="alacarte-price">¥ 800</span>
       </div>
       <div class="alacarte-item">
-        <span class="alacarte-name">だし巻き玉子</span>
-        <span class="alacarte-price">¥ 550</span>
+        <span class="alacarte-name">梅茶漬け</span>
+        <span class="alacarte-price">¥ 700</span>
       </div>
       <div class="alacarte-item">
-        <span class="alacarte-name">天ぷら盛り合わせ</span>
-        <span class="alacarte-price">¥ 1,100〜</span>
+        <span class="alacarte-name">チャンジャ茶漬け</span>
+        <span class="alacarte-price">¥ 800</span>
       </div>
       <div class="alacarte-item">
-        <span class="alacarte-name">季節の焼き魚</span>
-        <span class="alacarte-price">時価</span>
+        <span class="alacarte-name">鮭茶漬け</span>
+        <span class="alacarte-price">¥ 700</span>
       </div>
       <div class="alacarte-item">
-        <span class="alacarte-name">もつ煮込み</span>
-        <span class="alacarte-price">¥ 660</span>
+        <span class="alacarte-name">のり茶漬け</span>
+        <span class="alacarte-price">¥ 700</span>
       </div>
       <div class="alacarte-item">
-        <span class="alacarte-name">冷やしトマト</span>
-        <span class="alacarte-price">¥ 440</span>
+        <span class="alacarte-name">鯛茶漬け</span>
+        <span class="alacarte-price">¥ 1,000</span>
+      </div>
+    </div>
+
+    <!-- お飲み物 -->
+    <div class="menu-sep">
+      <div class="menu-sep-line"></div>
+      <span class="menu-sep-label">お飲み物</span>
+      <div class="menu-sep-line"></div>
+    </div>
+    <div class="drink-section">
+      <div class="drink-categories">
+
+        <div>
+          <p class="drink-category-label">Beer</p>
+          <div class="drink-item">
+            <div><span class="drink-name">生ビール</span><span class="drink-sub">サッポロ黒ラベル</span></div>
+            <span class="drink-price">¥ 550</span>
+          </div>
+          <div class="drink-item">
+            <div><span class="drink-name">瓶ビール</span><span class="drink-sub">サッポロ赤星 中ビン</span></div>
+            <span class="drink-price">¥ 700</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="drink-category-label">Highball · Sour</p>
+          <div class="drink-item">
+            <span class="drink-name">緑茶ハイ</span>
+            <span class="drink-price">¥ 480</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">ウーロンハイ</span>
+            <span class="drink-price">¥ 480</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">レモンサワー</span>
+            <span class="drink-price">¥ 580</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="drink-category-label">Shochu — 麦</p>
+          <div class="drink-item">
+            <span class="drink-name">佐藤</span>
+            <span class="drink-price">¥ 680</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">兼人</span>
+            <span class="drink-price">¥ 680</span>
+          </div>
+          <p class="drink-category-label" style="margin-top: var(--sp-lg);">Shochu — 芋</p>
+          <div class="drink-item">
+            <span class="drink-name">赤兎馬</span>
+            <span class="drink-price">¥ 600</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">侍士の門</span>
+            <span class="drink-price">¥ 650</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">魔王</span>
+            <span class="drink-price">¥ 900</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">森伊蔵</span>
+            <span class="drink-price">¥ 1,500</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="drink-category-label">Sake — 日本酒</p>
+          <div class="drink-item">
+            <div><span class="drink-name">東洋美人</span><span class="drink-sub">山口 純米吟醸 大辛口</span></div>
+            <span class="drink-price">¥ 850</span>
+          </div>
+          <div class="drink-item">
+            <div><span class="drink-name">星自慢</span><span class="drink-sub">福島 純米</span></div>
+            <span class="drink-price">¥ 1,000</span>
+          </div>
+          <div class="drink-item">
+            <div><span class="drink-name">田光</span><span class="drink-sub">三重 純米吟醸</span></div>
+            <span class="drink-price">¥ 1,200</span>
+          </div>
+          <div class="drink-item">
+            <div><span class="drink-name">飛露喜</span><span class="drink-sub">福島 特別純米</span></div>
+            <span class="drink-price">¥ 1,200</span>
+          </div>
+          <div class="drink-item">
+            <div><span class="drink-name">花邑</span><span class="drink-sub">秋田 純米吟醸</span></div>
+            <span class="drink-price">¥ 1,300</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="drink-category-label">Wine — グラス</p>
+          <div class="drink-item">
+            <span class="drink-name">グラスワイン 白</span>
+            <span class="drink-price">¥ 700</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">グラスワイン 赤</span>
+            <span class="drink-price">¥ 700</span>
+          </div>
+          <p class="drink-category-label" style="margin-top: var(--sp-lg);">Wine — ボトル 白</p>
+          <div class="drink-item">
+            <div><span class="drink-name">プレン・シュッド 2024</span><span class="drink-sub">フランス</span></div>
+            <span class="drink-price">¥ 5,800</span>
+          </div>
+          <div class="drink-item">
+            <div><span class="drink-name">ルネ・ド・ラ・クレイ 2022</span><span class="drink-sub">シャブリ フランス</span></div>
+            <span class="drink-price">¥ 8,000</span>
+          </div>
+          <p class="drink-category-label" style="margin-top: var(--sp-lg);">Wine — ボトル 赤</p>
+          <div class="drink-item">
+            <div><span class="drink-name">オリゾン・ド・ビジョー</span><span class="drink-sub">ピノ・ノワール フランス</span></div>
+            <span class="drink-price">¥ 5,500</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="drink-category-label">Spirits</p>
+          <div class="drink-item">
+            <div><span class="drink-name">AKAYANE</span><span class="drink-sub">山椒</span></div>
+            <span class="drink-price">¥ 680</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
