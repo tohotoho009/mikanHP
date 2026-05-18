@@ -9,7 +9,10 @@ const path = require('path');
   });
 
   const files = [
-    { html: 'poster-landscape-light.html', pdf: 'poster-landscape-light.pdf', landscape: true }
+    { html: 'poster.html',                 pdf: 'poster-dark.pdf',            landscape: false },
+    { html: 'poster-light.html',           pdf: 'poster-light.pdf',           landscape: false },
+    { html: 'poster-landscape.html',       pdf: 'poster-landscape.pdf',       landscape: true  },
+    { html: 'poster-landscape-light.html', pdf: 'poster-landscape-light.pdf', landscape: true  },
   ];
 
   for (const f of files) {

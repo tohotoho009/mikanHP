@@ -1,31 +1,51 @@
 const puppeteer = require('puppeteer-core');
 const path = require('path');
+const fs = require('fs');
 
-// ポスター本体から直接ロゴ要素をスクリーンショットして背景を完全一致させる
 (async () => {
   const browser = await puppeteer.launch({
     executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
     headless: true,
-    args: ['--no-sandbox']
+    args: ['--no-sandbox', '--allow-file-access-from-files']
   });
 
   const page = await browser.newPage();
-  const posterUrl = 'file:///' + path.resolve(__dirname, 'poster-landscape-light.html').replace(/\\/g, '/');
-  await page.goto(posterUrl, { waitUntil: 'networkidle0' });
+  await page.setViewport({ width: 280, height: 280 });
 
-  // 元の mikan-logo.jpg + invert/multiply で描画させてからキャプチャ
-  await page.evaluate(() => {
-    const img = document.querySelector('.left-logo-img');
-    img.src = img.src.replace('mikan-logo-light.png', 'mikan-logo.jpg');
-    img.style.filter = 'invert(1) grayscale(100%) brightness(0.55)';
-    img.style.mixBlendMode = 'multiply';
-  });
-  await page.waitForNetworkIdle({ idleTime: 300 }).catch(() => {});
+  // 一時HTMLファイルに書き出してfile://で開く（setContent+file://はChromeにブロックされる）
+  const tmpHtml = path.resolve(__dirname, '_logo-tmp.html');
+  fs.writeFileSync(tmpHtml, `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; }
+  body {
+    background: #f7f3ec;
+    width: 280px; height: 280px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    filter: invert(1) grayscale(100%);
+    mix-blend-mode: multiply;
+  }
+</style>
+</head>
+<body><img src="../images/mikan-logo.jpg"></body>
+</html>`);
 
-  const el = await page.$('.left-logo-img');
+  const url = 'file:///' + tmpHtml.replace(/\\/g, '/');
+  await page.goto(url, { waitUntil: 'networkidle0' });
+
   const output = path.resolve(__dirname, '../images/mikan-logo-light.png');
-  await el.screenshot({ path: output });
+  await page.screenshot({ path: output, clip: { x: 0, y: 0, width: 280, height: 280 } });
 
+  fs.unlinkSync(tmpHtml);
   await browser.close();
   console.log('Generated: images/mikan-logo-light.png');
 })();
